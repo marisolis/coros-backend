@@ -3,5 +3,5 @@
 ## Laravel
 Es la carpeta del backend
 
-##Reactjs
+## Reactjs
 Es la carpeta del front
