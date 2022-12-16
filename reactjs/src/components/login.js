@@ -15,7 +15,7 @@ export default function Login() {
 
     return(
         <div className="row justify-content-center pt-5">
-            <div className="col-sm-6">
+            <div className="col-sm-4">
                 <div className="card p-4">
                     <h1 className="text-center mb-3">Iniciar sesión </h1>
                     <div className="form-group">
@@ -31,6 +31,7 @@ export default function Login() {
                         id="pwd" />
                     </div>
                     <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Entrar</button>
+                    <a className="form-link mt-4 text-center" href="/register">Crear cuenta</a>
                 </div>
             </div>
         </div>

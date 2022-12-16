@@ -1,0 +1,39 @@
+.masthead {
+    height: 70vh !important;
+    min-height: 500px !important;
+    background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .container{
+    max-width: 100% !important;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .cards{
+    margin: 0;
+    padding: 30px !important;
+  }
+  
+  /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
