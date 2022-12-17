@@ -18,7 +18,7 @@
 ![image](https://user-images.githubusercontent.com/77992695/208221181-ede66b20-dfa3-48cc-a9d3-a7d3a8d44ba0.png)
 
 ### 3. Migrar base de datos
-#### Con la base de datos creada, y el proyecto abierto en VSCode, debe migrar la base de datos, para ello debe situarse dentro de la carpeta del backend, es decir Laravel, y ejecutar el siguiente comando:
+#### Con la base de datos creada, y el proyecto abierto en VSCode, debe migrar la base de datos, para ello debe situarse dentro de la carpeta del backend, es decir Laravel, y ejecutar el siguiente comando (En terminal):
     php artisan migrate:fresh --seed
 
 ### 4. Correr backend
