@@ -8,19 +8,19 @@ export default function Register() {
     const [name,setName] = useState();
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
-    const [telphone,setPhone] = useState();
+    const [phone,setPhone] = useState();
 
     const submitForm = () =>{
         // api call
-        http.post('/register',{email:email,password:password,name:name,telphone:telphone}).then((res)=>{
+        http.post('/register',{email:email,password:password,name:name,phone:phone}).then((res)=>{
             navigate('/login')
         })
     }
 
     return(
-        <div className="row justify-content-center pt-5">
+        <div className="row justify-content-center pt-5 mastheadBg">
             <div className="col-sm-4">
-                <div className="card p-4">
+                <div className="card p-4 rounded">
                     <h1 className="text-center mb-3">Registrarse </h1>
 
                     <div className="form-group">

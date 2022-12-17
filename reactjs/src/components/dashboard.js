@@ -24,10 +24,10 @@ export default function Dashboard() {
     return(
         <div className="col-sm-3 p-5">
             <div className="card p-4">
-                <h1 className="text-center">Perfil </h1>
+                <h1 className="text-center">Perfil</h1>
 
                 <div className="form-group mt-3">
-                <h4>Nombre</h4>
+                    <h4>Nombre</h4>
                     <p>{userdetail.name}</p>
                 </div>
 
@@ -36,8 +36,15 @@ export default function Dashboard() {
                     <p>{userdetail.email}</p>
                 </div>
 
+                <div className="form-group mt-3">
+                    <h4>Número telefónico</h4>
+                    <p>{userdetail.phone}</p>
+                </div>
+
                 <button className="btn btn-danger mt-3" onClick={logoutUser}>Cerrar sesión</button>
+
             </div>
         </div>
+        
     )
 }

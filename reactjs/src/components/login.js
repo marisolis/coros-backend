@@ -14,7 +14,7 @@ export default function Login() {
     }
 
     return(
-        <div className="row justify-content-center pt-5">
+        <div className="row justify-content-center pt-5 mastheadBg">
             <div className="col-sm-4">
                 <div className="card p-4">
                     <h1 className="text-center mb-3">Iniciar sesión </h1>
