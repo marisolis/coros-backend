@@ -17,14 +17,16 @@
 
 ![image](https://user-images.githubusercontent.com/77992695/208221181-ede66b20-dfa3-48cc-a9d3-a7d3a8d44ba0.png)
 
-### 3. Migrar base de datos
+### 3. Instalar las dependencias de laravel con: composer install, de lo contrario dará problemas al migrar la base de datos.
+
+### 4. Migrar base de datos
 #### Con la base de datos creada, y el proyecto abierto en VSCode, debe migrar la base de datos, para ello debe situarse dentro de la carpeta del backend, es decir Laravel, y ejecutar el siguiente comando (En terminal):
     php artisan migrate:fresh --seed
 
-### 4. Correr backend
+### 5. Correr backend
 #### (En terminal) Debe situarse en la carpeta del backend, es decir Laravel, una vez dentro, ejecutar el siguiente comando para correr el backend:
     php artisan serve
     
-### 5. Correr frontend
+### 6. Correr frontend
 #### (En otra terminal) Debe situarse en la carpeta del frontend, es decir reactjs, una vez dentro, ejecutar el siguiente comando para correr el frontend:
     npm start
