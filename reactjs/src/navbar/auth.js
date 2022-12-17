@@ -4,12 +4,15 @@ import Dashboard from '../components/dashboard';
 import AuthUser from '../components/AuthUser';
 import Contrats from '../components/contrats';
 function Auth() {
+
     const {token,logout} = AuthUser();
+
     const logoutUser = () => {
         if(token !== undefined){
             logout();
         }
     }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-0 py-2">
@@ -27,10 +30,7 @@ function Auth() {
                     <a className="nav-link" href="/contrats">Contratos</a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="/Login">Iniciar sesión</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="/Register">Crear cuenta</a>
+                    <a className="nav-link" href="/dashboard">Perfil</a>
                     </li>
                 </ul>
                 </div>

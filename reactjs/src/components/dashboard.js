@@ -15,24 +15,29 @@ export default function Dashboard() {
         });
     }
 
-    function renderElement(){
-        if(userdetail){
-            return <div>
-                <h4>Name</h4>
-                <p>{userdetail.name}</p>
-                <h4>Email</h4>
-                <p>{userdetail.email}</p>
-            </div>
-        }else{
-            return <p>Loading.....</p>
+    const {token,logout} = AuthUser();
+
+    const logoutUser = () => {
+            logout();
         }
 
-    }
-
     return(
-        <div>
-            <h1 className='mb-4 mt-4'>Dashboard page</h1>
-            { renderElement() }
+        <div className="col-sm-3 p-5">
+            <div className="card p-4">
+                <h1 className="text-center">Perfil </h1>
+
+                <div className="form-group mt-3">
+                <h4>Nombre</h4>
+                    <p>{userdetail.name}</p>
+                </div>
+
+                <div className="form-group mt-3">
+                    <h4>Correo electrónico</h4>
+                    <p>{userdetail.email}</p>
+                </div>
+
+                <button className="btn btn-danger mt-3" onClick={logoutUser}>Cerrar sesión</button>
+            </div>
         </div>
     )
 }
