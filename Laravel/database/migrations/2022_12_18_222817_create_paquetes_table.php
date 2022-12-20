@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_mes');
+        Schema::create('paquetes', function (Blueprint $table) {
+            $table->id();
+            $table->integer('proveedor_id');
+            $table->string('name');
+            $table->float('precio');
+            $table->string('archivos')->nullable();
+            $table->string('descripcion');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mes');
+        Schema::dropIfExists('paquetes');
     }
 };

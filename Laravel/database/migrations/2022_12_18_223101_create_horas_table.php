@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dia', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_dia');
+        Schema::create('horas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dia');
+        Schema::dropIfExists('horas');
     }
 };

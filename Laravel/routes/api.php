@@ -27,3 +27,9 @@ Route::group(['middleware'=>'api'],function(){
     Route::post('refresh', [AuthController::class,'refresh']);
     Route::post('me', [AuthController::class,'me']);
 });
+
+Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], function(){
+    Route::apiResource('proveedores', ProveedorController::class);
+    Route::apiResource('paquetes',PaqueteController::class);
+    Route::apiResource('fechas',FechaController::class);
+});

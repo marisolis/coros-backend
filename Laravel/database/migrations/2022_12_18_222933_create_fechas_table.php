@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hora', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_hora');
+        Schema::create('fechas', function (Blueprint $table) {
+            $table->id();
+            $table->integer('proveedor_id');
+            $table->integer('mes_id');
+            $table->integer('dia_id');
+            $table->integer('hora_id');
+            $table->boolean('disponibilidad');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hora');
+        Schema::dropIfExists('fechas');
     }
 };
