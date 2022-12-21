@@ -1,6 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
 import cardImg from '../components/resources/cardImg.jpg';
-import Product from './product';
 import './styles.css';
 
 export default function Home() {
@@ -37,7 +35,7 @@ export default function Home() {
                     <div className="card-body">
                         <h5 className="card-title">Titulo</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Ver más</a>
+                        <a href="/producto" className="btn btn-primary">Ver más</a>
                     </div>
                 </div>
 
@@ -46,7 +44,7 @@ export default function Home() {
                     <div className="card-body">
                         <h5 className="card-title">Titulo</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Ver más</a>
+                        <a href="/producto" className="btn btn-primary">Ver más</a>
                     </div>
                 </div>
 
@@ -55,13 +53,10 @@ export default function Home() {
                     <div className="card-body">
                         <h5 className="card-title">Titulo</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Ver más</a>
+                        <a href="/producto" className="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>
-            <Routes>
-                <Route path='/producto' element={<Product/>}/>
-            </Routes>
         </div>
     )
 }
