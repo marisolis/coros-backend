@@ -83,9 +83,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Routes>
-        <Route path="/producto" element={<Product />} />
-      </Routes>
     </div>
   );
 }
