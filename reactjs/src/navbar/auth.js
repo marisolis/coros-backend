@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Dashboard from "../components/dashboard";
 import AuthUser from "../components/AuthUser";
+import VerMas from "../Pages/VerMas";
 import { useEffect, useState } from "react";
 
 function Auth() {
@@ -51,6 +52,7 @@ function Auth() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/proveedor/:id" element={<VerMas />} />
         </Routes>
       </div>
     </>

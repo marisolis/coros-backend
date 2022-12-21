@@ -1,5 +1,3 @@
-import "../assets/style/styles.css";
-
 export default function HeroImage() {
   return (
     <header className="masthead">
