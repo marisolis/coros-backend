@@ -6,6 +6,9 @@ use App\Models\Fecha;
 use App\Http\Requests\StoreFechaRequest;
 use App\Http\Requests\UpdateFechaRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\FechaResource;
+use Illuminate\Http\Request;
+use App\Filters\V1\FechaFilter;
 
 class FechaController extends Controller
 {
@@ -14,9 +17,20 @@ class FechaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Fecha::all();
+        $filter = new FechaFilter();
+        $queryItems = $filter->transform($request); //[['column', 'operator', 'value']]
+
+        if (count($queryItems) == 0) {
+            return Fecha::all();
+            //return new PaqueteCollection(Paquete::all());
+        } else {
+            $fechas = Fecha::where($queryItems)->all();
+            return $fechas->appends($request->query());
+            //return new PaqueteCollection($paquetes->appends($request->query()));
+
+        }
     }
 
     /**
@@ -48,7 +62,7 @@ class FechaController extends Controller
      */
     public function show(Fecha $fecha)
     {
-        //
+        return new FechaResource($fecha);
     }
 
     /**

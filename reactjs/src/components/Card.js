@@ -7,11 +7,11 @@ export const Card = ({ proveedor }) => {
     <div className="card" style={{ width: "22rem" }}>
       <img className="card-img-top" src={cardImg} alt="Card cap"></img>
       <div className="card-body">
-          <h5 className="card-title">{proveedor.name}</h5>
-          <p className="card-text">{proveedor.informacion}</p>
-          <a href="/proveedor" className="btn btn-primary">
-            Ver más
-          </a>
+        <h5 className="card-title">{proveedor.name}</h5>
+        <p className="card-text">{proveedor.informacion}</p>
+        <a href={`/proveedor/${proveedor.id}`} className="btn btn-primary">
+          Ver más
+        </a>
       </div>
     </div>
   );

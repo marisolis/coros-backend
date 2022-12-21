@@ -1,5 +1,7 @@
-import cardImg from '../components/resources/cardImg.jpg';
-import './styles.css';
+import { Routes, Route } from "react-router-dom";
+import cardImg from "../components/resources/cardImg.jpg";
+import Product from "./product";
+import "./styles.css";
 
 export default function Home() {
   return (

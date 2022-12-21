@@ -24,11 +24,17 @@ class ProveedorController extends Controller
         $filterItems = $filter->transform($request); //[['column', 'operator', 'value']]
 
         $includePaquetes = $request->query('includePaquetes');
+        $includeFechas = $request->query('includeFechas');
 
         $proveedors = Proveedor::where($filterItems);
         
-        if ($includePaquetes) {
-            $proveedors = $proveedors->with('paquetes');
+        if ($includePaquetes or $includeFechas) {
+            if ($includePaquetes){
+                $proveedors = $proveedors->with('paquetes');
+            }
+            if ($includeFechas){
+                $proveedors = $proveedors->with('fechas');
+            }
         }else {
             return Proveedor::all();
         };
@@ -67,10 +73,13 @@ class ProveedorController extends Controller
     public function show(Proveedor $proveedor)
     {
         $includePaquetes = request()->query('includePaquetes');
+        $includeFechas = request()->query('includeFechas');
 
-        if ($includePaquetes) {
+        if($includeFechas){
+            return $proveedor->loadMissing('fechas');
+        }
+        if($includePaquetes){
             return $proveedor->loadMissing('paquetes');
-            //return new ProveedorResource($proveedor->loadMissing('paquetes'));
         }
 
         return new ProveedorResource($proveedor);

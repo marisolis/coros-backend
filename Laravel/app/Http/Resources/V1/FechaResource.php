@@ -4,7 +4,7 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProveedorResource extends JsonResource
+class FechaResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,14 @@ class ProveedorResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id'=>$this->id,
-            'name'=>$this->name,
-            'numTelefono'=>$this->num_Telefono,
-            'informacion'=>$this->informacion,
-            'fechas' => FechaResource::collection($this->whenLoaded('fechas')),
-            'paquetes' => PaqueteResource::collection($this->whenLoaded('paquetes')),
+            'proveedorId'=>$this->proveedor_id,
+            'mesId'=>$this->mes_id,
+            'diaId'=>$this->dia_id,
+            'horaId'=>$this->hora_id,
+            'disponibilidad'=>$this->disponibilidad
         ];
     }
 }
+

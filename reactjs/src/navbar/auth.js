@@ -2,8 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Dashboard from "../components/dashboard";
 import AuthUser from "../components/AuthUser";
-import Product from '../components/product';
-import Provider from '../components/provider';
+import VerMas from "../Pages/VerMas";
 
 function Auth() {
   const { token, logout } = AuthUser();
@@ -52,8 +51,7 @@ function Auth() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/producto" element={<Product />} />
-          <Route path="/proveedor" element={<Provider />} />
+          <Route path="/proveedor/:id" element={<VerMas />} />
         </Routes>
       </div>
     </>
