@@ -23,9 +23,34 @@
     overflow-y: hidden;
   }
 
+  .card-title{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    hyphens: manual;
+  }
+
+  .card-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    hyphens: manual;
+  }
+
   .cards{
-    margin: 0;
     padding: 70px !important;
+  }
+
+  .cards2{
+    margin-left: 9%;
+    margin-right: 9%;
+    background-color: white;
   }
 
  .paquete-post{

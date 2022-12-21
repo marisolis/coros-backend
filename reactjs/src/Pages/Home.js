@@ -26,7 +26,7 @@ function Home() {
     <div className="container">
       <div className="container-fluid mw-100 m-0 p-0">{<HeroImage />}</div>
       {<Filtrar />}
-      <section className="lista-personajes">
+      <section className="lista-personajes cards justify-content-between">
         {proveedores != null
           ? proveedores.map((proveedor) => (
               <Card key={proveedor.id} proveedor={proveedor} />

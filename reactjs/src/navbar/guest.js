@@ -3,6 +3,7 @@ import Home from '../components/home';
 import Login from '../components/login';
 import Register from '../components/register';
 import Product from '../components/product';
+import Provider from '../components/provider';
 
 function Guest() {
     return (
@@ -34,6 +35,7 @@ function Guest() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/producto" element={<Product />} />
+                    <Route path="/proveedor" element={<Provider />} />
                 </Routes>
             </div>
         </>

@@ -2,17 +2,60 @@
   width: 100%;
   display: grid;
   grid-template: auto / 1fr;
-  gap: 4rem;
+  gap: 7rem;
 }
 
 @media screen and (min-width: 600px) {
   .lista-personajes {
     grid-template: auto / repeat(2, 1fr);
+    
   }
 }
 
 @media screen and (min-width: 1000px) {
   .lista-personajes {
+    grid-template: auto / repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1750px) {
+  .lista-personajes {
+    gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .lista-personajes {
+    gap: 0rem;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .lista-personajes {
     grid-template: auto / repeat(3, 1fr);
+    gap: 3em;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .lista-personajes {
+    grid-template: auto / repeat(2, 0fr);
+    gap: 16em;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .lista-personajes {
+    grid-template: auto / repeat(2, 1fr);
+    gap: 7em;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .lista-personajes {
+    flex-direction: column;
+    display: inline-flex;
+    align-items: center !important;
+
   }
 }
