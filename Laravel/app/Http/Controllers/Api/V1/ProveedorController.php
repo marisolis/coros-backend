@@ -29,8 +29,11 @@ class ProveedorController extends Controller
         
         if ($includePaquetes) {
             $proveedors = $proveedors->with('paquetes');
-        }
+        }else {
+            return Proveedor::all();
+        };
 
+        //return $proveedors->all()->appends($request->query());
         return new ProveedorCollection($proveedors->paginate()->appends($request->query()));
     }
 
@@ -66,7 +69,8 @@ class ProveedorController extends Controller
         $includePaquetes = request()->query('includePaquetes');
 
         if ($includePaquetes) {
-            return new ProveedorResource($proveedor->loadMissing('paquetes'));
+            return $proveedor->loadMissing('paquetes');
+            //return new ProveedorResource($proveedor->loadMissing('paquetes'));
         }
 
         return new ProveedorResource($proveedor);
