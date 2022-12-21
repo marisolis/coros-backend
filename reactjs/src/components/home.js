@@ -2,27 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import cardImg from "../components/resources/cardImg.jpg";
 import Product from "./product";
 import "./styles.css";
-import React, { useReducer } from "react";
-import { DateSingleInput } from "@datepicker-react/styled";
-import "react-datepicker/dist/react-datepicker.css";
 
-const initialState = {
-  date: null,
-  showDatepicker: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "focusChange":
-      return { ...state, showDatepicker: action.payload };
-    case "dateChange":
-      return action.payload;
-    default:
-      throw new Error();
-  }
-}
 export default function Home() {
-  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="container-fluid mw-100 m-0 p-0">
       <header className="masthead">
@@ -44,16 +25,7 @@ export default function Home() {
       >
         <div className="col-12 text-center">
           <h1 className="fw-light">Seccion para filtrado</h1>
-          <DateSingleInput
-            onDateChange={(data) =>
-              dispatch({ type: "dateChange", payload: data })
-            }
-            onFocusChange={(focusedInput) =>
-              dispatch({ type: "focusChange", payload: focusedInput })
-            }
-            date={state.date} // Date or null
-            showDatepicker={state.showDatepicker} // Boolean
-          />
+          <p className="lead">Filtrado para encontrar proveedores</p>
         </div>
       </div>
       <div className="cards d-flex justify-content-between">

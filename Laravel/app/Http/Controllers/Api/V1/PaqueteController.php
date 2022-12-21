@@ -25,11 +25,12 @@ class PaqueteController extends Controller
         $queryItems = $filter->transform($request); //[['column', 'operator', 'value']]
 
         if (count($queryItems) == 0) {
-            return new PaqueteCollection(Paquete::paginate());
+            return Paquete::all();
+            //return new PaqueteCollection(Paquete::all());
         } else {
-            $paquetes = Paquete::where($queryItems)->paginate();
-
-            return new PaqueteCollection($paquetes->appends($request->query()));
+            $paquetes = Paquete::where($queryItems)->all();
+            return $paquetes->appends($request->query());
+            //return new PaqueteCollection($paquetes->appends($request->query()));
 
         }
     }

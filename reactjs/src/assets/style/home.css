@@ -1,0 +1,18 @@
+.lista-personajes {
+  width: 100%;
+  display: grid;
+  grid-template: auto / 1fr;
+  gap: 4rem;
+}
+
+@media screen and (min-width: 600px) {
+  .lista-personajes {
+    grid-template: auto / repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .lista-personajes {
+    grid-template: auto / repeat(3, 1fr);
+  }
+}
