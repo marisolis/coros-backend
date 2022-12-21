@@ -4,6 +4,7 @@ import Login from "../components/login";
 import Register from "../components/register";
 import Product from "../components/product";
 import VerMas from "../Pages/VerMas";
+import Proveedor from "../components/Vendor";
 
 function Guest() {
   return (
@@ -51,6 +52,7 @@ function Guest() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/producto" element={<Product />} />
+          <Route path="/vendor" element={<Proveedor />} />
           <Route path="/proveedor/:id" element={<VerMas />} />
         </Routes>
       </div>

@@ -6,6 +6,7 @@ import Filtrar from "../components/Filtrar";
 import { proveedoresLista } from "../Helpers/Proveedor";
 
 function Home() {
+  
   const [proveedores, setproveedores] = useState(null);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ const proveedoresLista = async (state) => {
 
 const proveedorUnico = async (id, state) => {
   const response = await axios.get(
-    `http://127.0.0.1:8000/api/v1/proveedores/${id}`
+    `http://127.0.0.1:8000/api/v1/paquetes/${id}`
   );
   state(response.data.data);
 };

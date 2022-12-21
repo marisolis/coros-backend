@@ -1,7 +1,7 @@
 import './styles.css';
 import cardImg from '../components/resources/cardImg.jpg';
 import paqImg from '../components/resources/TestBg2.jpg';
-export default function Provider() {
+export default function Vendor() {
 
     return(
         <div className='container-fluid mw-100 m-0 p-0'>
@@ -28,9 +28,9 @@ export default function Provider() {
                             <div className="card p-4 paquete-info">
                                 <h1>Nombre de proveedor</h1>
                                 <p>Descripcion del proveedor</p>
-                                <h2>Fechas</h2>
-                                <h2>Fechas</h2>
-                                <h2>Fechas</h2>
+                                <h3>Fechas</h3>
+                                <h3>Fechas</h3>
+                                <h3>Fechas</h3>
                             </div>
                         </div>
                     </div>

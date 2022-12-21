@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Dashboard from "../components/dashboard";
 import AuthUser from "../components/AuthUser";
+import Proveedor from "../components/Vendor";
 import VerMas from "../Pages/VerMas";
 
 function Auth() {
@@ -52,6 +53,7 @@ function Auth() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/proveedor/:id" element={<VerMas />} />
+          <Route path="/vendor" element={<Proveedor />} />
         </Routes>
       </div>
     </>
