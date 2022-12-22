@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Filters\V1\EmpresaFilter;
 use App\Models\Empresa;
 use App\Http\Requests\StoreEmpresaRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateEmpresaRequest;
+use App\Http\Resources\V1\EmpresaResource;
+use App\Http\Resources\V1\EmpresaCollection;
+use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
@@ -14,10 +18,27 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Empresa::all();
-    }
+       $filter = new EmpresaFilter();
+       $filterItems = $filter->transform($request);
+
+       $includePaquetes = $request->query('includePaquetes');
+       $includeFechas = $request->query('includeFechas');
+
+       $empresas = Empresa::where($filterItems);
+
+       if($includeFechas){
+        $empresas = $empresas->with('fechas');
+       }
+
+       if($includePaquetes){
+        $empresas = $empresas->with('paquetes');
+       }
+
+       return new EmpresaCollection($empresas->paginate()->appends($request->query()));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +69,17 @@ class EmpresaController extends Controller
      */
     public function show(Empresa $empresa)
     {
-        return $empresa;
+        $includeFechas = request()->query('includeFechas');
+        $includePaquetes = request()->query('includePaquetes');
+
+        if ($includePaquetes) {
+            return new EmpresaResource($empresa->loadMissing('paquetes'));
+        }
+        if ($includeFechas) {
+            return new EmpresaResource($empresa->loadMissing('fechas'));
+        }
+
+        return new EmpresaResource($empresa);
     }
 
     /**
