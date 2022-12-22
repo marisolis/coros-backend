@@ -186,13 +186,21 @@
   .backBtn{
     padding: 0;
     margin-top: 2%;
-    margin-bottom: 0;
+    margin-bottom: 2px;
     color: gray;
+    border-radius: 0px;
+    border-style: none !important;
+    border-color: rgba(255, 255, 255, 0);
+  }
 
+  .backBtn:active{
+    border: 0;
+    border-style: none !important;
+    border-radius: 0px;
   }
 
   .paquete-src{
-    border: 2px solid blue;
+    border: 2px solid black;
   }
 
   .paquete-info{

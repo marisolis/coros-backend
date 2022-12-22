@@ -7,7 +7,7 @@ use App\Filters\ApiFilter;
 
 class PaqueteFilter extends ApiFilter {
   protected $safeParms  = [
-    'proveedorId'=>['eq'],
+    'empresa_id'=>['eq'],
     'name' => ['eq'],
     'precio'=>['eq', 'lt', 'gt', 'lte', 'gte'],
     'descripcion'=>['eq'],
@@ -15,7 +15,7 @@ class PaqueteFilter extends ApiFilter {
   ];
 
   protected $columnMap = [
-    'proveedorId'=>'proveedor_Id',
+    'empresa_id'=>'proveedor_Id',
     'precio' => 'precio',
 ];
 

@@ -16,7 +16,7 @@ class PaqueteResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'proveedorId'=>$this->proveedor_id,
+            'empresa_id'=>$this->empresa_id,
             'name'=>$this->name,
             'precio'=>$this->precio,
             'descripcion'=>$this->descripcion,

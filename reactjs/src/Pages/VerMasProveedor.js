@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { proveedorUnico } from "../Helpers/Proveedor";
-import { paquetesLista } from "../Helpers/Paquete";
+import { proveedorUnicoPaquetes } from "../Helpers/Proveedor";
 import "../assets/style/vermas.css";
 import paqImg from "../components/resources/TestBg2.jpg";
 import { Card } from "../components/Card2";
@@ -11,25 +11,22 @@ function VerMasProveedor() {
   const [proveedor, setproveedor] = useState(null);
   const params = useParams();
 
+  const [paquetes, setpaquetes] = useState(null);
+
   let navigate = useNavigate();
 
   useEffect(() => {
     proveedorUnico(params.id, setproveedor);
-  }, []);
-
-  const [paquetes, setpaquetes] = useState(null);
-
-  useEffect(() => {
-    paquetesLista(setpaquetes);
+    proveedorUnicoPaquetes(params.id, setpaquetes);
   }, []);
 
   return (
     <div className="container-fluid mw-100 m-0 p-0">
       <div className="product d-flex justify-content-center">
         <div className="col-sm-10 p-3 post-container">
-          <button className="btn backBtn" onClick={() => navigate(-1)}>
+          <a className="btn backBtn" onClick={() => navigate(-1)}>
             Regresar
-          </button>
+          </a>
           <div className="card p-2 paquete-post d-flex flex-row">
             <div className="flex-column">
               <div className="imagen-paquete-container justify-content-center">
@@ -53,7 +50,7 @@ function VerMasProveedor() {
                   <div>
                     <h1>{proveedor.name}</h1>
                     <h5 style={{ color: "gray" }}>Num. {proveedor.id}</h5>
-                    <p>Descripcion del proveedor</p>
+                    <p>{proveedor.informacion}</p>
                     <h3>Fechas</h3>
                   </div>
                 ) : (
@@ -64,12 +61,17 @@ function VerMasProveedor() {
           </div>
         </div>
       </div>
+      {proveedor != null ? (
+      <h2 style={{marginLeft: '9%', marginTop: '1%'}}>Paquetes de {proveedor.name}</h2>
+      ) : (
+        "No hay proveedores"
+      )}
       <div className="lista-personajes-vermas cards2 justify-content-between">
         {paquetes != null
-          ? paquetes.map((paquete) => (
+          ?( paquetes.map((paquete) => (
               <Card key={paquete.id} paquete={paquete} />
             ))
-          : "No hay proveedores"}
+          ): "No hay paquetes"}
       </div>
     </div>
   );
