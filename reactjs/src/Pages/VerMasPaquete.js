@@ -1,30 +1,25 @@
+import paqImg from '../components/resources/TestBg2.jpg';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { proveedorUnico } from "../Helpers/Proveedor";
-import { paquetesLista } from "../Helpers/Paquete";
-import "../assets/style/vermas.css";
-import paqImg from '../components/resources/TestBg2.jpg';
-import { Card } from "../components/Card";
+import { paqueteUnico } from '../Helpers/Paquete';
+import { useNavigate } from "react-router-dom";
 
-function VerMas() {
+export default function VerMasPaquete() {
 
-  const [proveedor, setproveedor] = useState(null);
-  const params = useParams();
+    let navigate = useNavigate();
 
-  useEffect(() => {
-    proveedorUnico(params.id, setproveedor);
-  }, []);
+    const [paquete, setpaquete] = useState(null);
+    const params = useParams();
 
-  const [paquetes, setpaquetes] = useState(null);
+    useEffect(() => {
+      paqueteUnico(params.id, setpaquete);
+    }, []);
 
-  useEffect(() => {
-    paquetesLista(setpaquetes);
-  }, []);
-
-  return (
+    return(
         <div className='container-fluid mw-100 m-0 p-0'>
             <div className='product d-flex justify-content-center'>
                 <div className="col-sm-10 p-3 post-container">
+                <button className="btn backBtn" onClick={() => navigate(-1)}>Regresar</button>
                     <div className="card p-2 paquete-post d-flex flex-row">
                         <div className='flex-column'>
                             <div className='imagen-paquete-container justify-content-center'>
@@ -44,32 +39,22 @@ function VerMas() {
                         </div>
                         <div className="paquete-info-container col-sm-3 ms-3">
                             <div className="card p-4 paquete-info">
-                                {proveedor != null ? (
-                                <div>
-                                    <h2>ID: {proveedor.id}</h2>
-                                    <h1>Name: {proveedor.name}</h1>
-                                </div>
-                                ) : (
-                                "No hay proveedores"
+                                {paquete != null ? (
+                                    <div>
+                                        <h1>{paquete.name}</h1>
+                                        <h5 style={{color: 'gray'}}>Num. {paquete.id}</h5>
+                                        <p>{paquete.descripcion}</p>
+                                        <h2>${paquete.precio} MXN</h2>
+                                    </div>
+                                    ) : (
+                                    "No hay proveedores"
                                 )}
-                                <p>Descripcion del proveedor</p>
-                                <h3>Fechas</h3>
-                                <h3>Fechas</h3>
-                                <h3>Fechas</h3>
+                                <button className="btn btn-primary mt-2 btn-contratar">Contratar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                <div className="lista-personajes-vermas cards2 justify-content-between">
-                    {paquetes != null
-                    ? paquetes.map((paquete) => (
-                        <Card key={paquete.id} proveedor={paquete} />
-                        ))
-                    : "No hay proveedores"}
-                </div>
         </div>
-  );
+    )
 }
-
-export default VerMas;

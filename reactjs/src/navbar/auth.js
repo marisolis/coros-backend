@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Dashboard from "../components/dashboard";
 import AuthUser from "../components/AuthUser";
-import Proveedor from "../components/Vendor";
-import VerMas from "../Pages/VerMas";
+import Paquete from "../Pages/VerMasPaquete";
+import Proveedor from "../Pages/VerMasProveedor";
 
 function Auth() {
   const { token, logout } = AuthUser();
@@ -41,7 +41,7 @@ function Auth() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/dashboard">
-                  Perfil
+                  Mi perfil
                 </a>
               </li>
             </ul>
@@ -52,8 +52,8 @@ function Auth() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/proveedor/:id" element={<VerMas />} />
-          <Route path="/vendor" element={<Proveedor />} />
+          <Route path="/paquete/:id" element={<Paquete />} />
+          <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
       </div>
     </>

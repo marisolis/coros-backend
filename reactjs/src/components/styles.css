@@ -175,14 +175,6 @@
     }
   }
 
-  .paquete-info-container{
-
-  }
-  
-  .post-container{
-    
-  }
-
   .imagen-paquete{
     max-width: 100%;
     max-height: 100%;
@@ -191,7 +183,11 @@
     margin-right: auto;
   }
 
-  .btn-contratar{
+  .backBtn{
+    padding: 0;
+    margin-top: 2%;
+    margin-bottom: 0;
+    color: gray;
 
   }
 
@@ -201,6 +197,42 @@
 
   .paquete-info{
     min-height: 50%;
+  }
+
+  .prefixNum{
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    border-top-left-radius: 3px 3px !important;
+    border-bottom-left-radius: 3px 3px !important;
+  }
+
+  .prefixInput{
+    position: relative !important;
+    z-index: 2 !important;
+    float: left !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    display: table-cell !important;
+    padding: 6px 12px !important;
+    margin: 0 !important;
+    border-top-left-radius: 0px 0px !important;
+    border-bottom-left-radius: 0px 0px !important;
+  }
+
+  .prefixGroup{
+    position: relative;
+    display: table;
+    border-collapse: separate;
   }
   
   /* width */

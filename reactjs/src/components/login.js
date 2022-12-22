@@ -6,8 +6,9 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const submitForm = () => {
+  const submitForm = (e) => {
     // api call
+    e.preventDefault();
     http.post("/login", { email: email, password: password }).then((res) => {
       setToken(res.data.user, res.data.access_token);
     });
@@ -16,7 +17,7 @@ export default function Login() {
   return (
     <div className="row justify-content-center pt-5 mastheadBg">
       <div className="col-sm-4">
-        <div className="card p-4">
+        <form onSubmit={submitForm} className="card p-4">
           <h1 className="text-center mb-3">Iniciar sesión </h1>
           <div className="form-group">
             <label>Correo electrónico:</label>
@@ -39,16 +40,17 @@ export default function Login() {
             />
           </div>
           <button
-            type="button"
+            type="submit"
             onClick={submitForm}
+            onSubmit={submitForm}
             className="btn btn-primary mt-4"
           >
             Entrar
           </button>
-          <a className="form-link mt-4 text-center" href="/register">
+          <a  className="form-link mt-4 text-center" href="/register">
             Crear cuenta
           </a>
-        </div>
+        </form>
       </div>
     </div>
   );

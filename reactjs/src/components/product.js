@@ -1,7 +1,7 @@
 import './styles.css';
 import paqImg from '../components/resources/TestBg2.jpg';
 export default function Product() {
-
+    
     return(
         <div className='container-fluid mw-100 m-0 p-0'>
             <div className='product d-flex justify-content-center'>

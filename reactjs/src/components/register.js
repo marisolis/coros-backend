@@ -10,8 +10,9 @@ export default function Register() {
     const [password,setPassword] = useState();
     const [phone,setPhone] = useState();
 
-    const submitForm = () =>{
+    const submitForm = (e) =>{
         // api call
+        e.preventDefault();
         http.post('/register',{email:email,password:password,name:name,phone:phone}).then((res)=>{
             navigate('/login')
         })
@@ -20,7 +21,7 @@ export default function Register() {
     return(
         <div className="row justify-content-center pt-5 mastheadBg">
             <div className="col-sm-4">
-                <div className="card p-4 rounded">
+                <form onSubmit={submitForm} className="card p-4">
                     <h1 className="text-center mb-3">Registrarse </h1>
 
                     <div className="form-group">
@@ -39,9 +40,12 @@ export default function Register() {
 
                     <div className="form-group mt-3">
                         <label>Número telefónico:</label>
-                        <input type="tel" className="form-control" placeholder="Número de telefóno"
-                            onChange={e=>setPhone(e.target.value)}
-                        id="telphone" required/>
+                        <div className="prefixGroup">
+                            <span className="prefixNum">+52</span>
+                            <input type="tel" className="form-control prefixInput" placeholder="Número de telefóno"
+                                onChange={e=>setPhone(e.target.value)}
+                                id="telphone" required/>
+                        </div>
                     </div>
 
                     <div className="form-group mt-3">
@@ -51,9 +55,9 @@ export default function Register() {
                         id="pwd" required/>
                     </div>
 
-                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Crear cuenta</button>
+                    <button type="submit" onClick={submitForm} onSubmit={submitForm} className="btn btn-primary mt-4">Crear cuenta</button>
                     <a className="form-link mt-4 text-center" href="/login">Ya tienes una cuenta?</a>
-                </div>
+                </form>
             </div>
         </div>
     )

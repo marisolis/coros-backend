@@ -2,9 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Login from "../components/login";
 import Register from "../components/register";
-import Product from "../components/product";
-import VerMas from "../Pages/VerMas";
-import Proveedor from "../components/Vendor";
+import Paquete from "../Pages/VerMasPaquete";
+import Proveedor from "../Pages/VerMasProveedor";
 
 function Guest() {
   return (
@@ -51,9 +50,8 @@ function Guest() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/producto" element={<Product />} />
-          <Route path="/vendor" element={<Proveedor />} />
-          <Route path="/proveedor/:id" element={<VerMas />} />
+          <Route path="/paquete/:id" element={<Paquete />} />
+          <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
       </div>
     </>

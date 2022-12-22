@@ -3,6 +3,7 @@
   display: grid;
   grid-template: auto / 1fr;
   gap: 7rem;
+  margin-bottom:4%;
 }
 
 @media screen and (min-width: 600px) {
