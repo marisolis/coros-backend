@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\Proveedor;
+use App\Models\Empresa;
 use App\Models\Dia;
 use App\Models\Hora;
 use App\Models\Mes;
@@ -20,7 +20,7 @@ class FechaFactory extends Factory
     public function definition()
     {
         return [
-            'proveedor_id'=> Proveedor::factory(),
+            'empresa_id'=> Empresa::factory(),
             'mes_id'=> Mes::factory(),
             'dia_id'=> Dia::factory(),
             'hora_id'=> Hora::factory(),

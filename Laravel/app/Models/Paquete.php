@@ -9,7 +9,7 @@ class Paquete extends Model
 {
     use HasFactory;
 
-    public function proveedor(){
-        return $this->belongsTo(Proveedor::class);
+    public function empresa(){
+        return $this->belongsTo(Empresa::class);
     }
 }

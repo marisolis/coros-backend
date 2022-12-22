@@ -29,7 +29,7 @@ Route::group(['middleware'=>'api'],function(){
 });
 
 Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], function(){
-    Route::apiResource('proveedores', ProveedorController::class);
+    Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('paquetes',PaqueteController::class);
     Route::apiResource('fechas',FechaController::class);
 });

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('paquetes', function (Blueprint $table) {
             $table->id();
-            $table->integer('proveedor_id');
+            $table->integer('empresa_id');
             $table->string('name');
             $table->float('precio');
             $table->string('archivos')->nullable();

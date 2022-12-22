@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\Proveedor;
+
+use App\Models\Empresa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class PaqueteFactory extends Factory
     public function definition()
     {
         return [
-            'proveedor_id'=> Proveedor::factory(),
+            'empresa_id'=> Empresa::factory(),
             'name' =>$this->faker->domainName(),
             'precio'=>$this->faker->numberBetween(100,10000),
             'archivos'=>$this->faker->url(),
