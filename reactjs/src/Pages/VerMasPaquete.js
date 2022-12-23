@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { paqueteUnico } from "../Helpers/Paquete";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Contratar from "./Contratar";
 
 function VerMasPaquete() {
 
@@ -54,19 +55,17 @@ function VerMasPaquete() {
             <div className="paquete-info-container col-sm-3 ms-3">
               <div className="card p-4 paquete-info">
                 {paquete != null ? (
-                    <div>
+                    <div className="mb-2">
                       <h1>{paquete.name}</h1>
                       <h5 id="proveedorName" style={{ color: "gray" }}>...</h5>
                       <h6 style={{ color: "gray" }}>Num. {paquete.id}</h6>
                       <p>{paquete.descripcion}</p>
                       <h2>${paquete.precio} MXN</h2>
-                  </div>
+                    </div>
                 ) : (
-                  "No hay proveedores"
+                  "No disponible"
                   )}
-                <button className="btn btn-primary mt-2 btn-contratar">
-                  Contratar
-                </button>
+                <Contratar/>
               </div>
             </div>
           </div>
