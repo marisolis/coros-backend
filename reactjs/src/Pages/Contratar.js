@@ -1,24 +1,33 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthUser from '../components/AuthUser';
 
+var name;
+var email;
+var phone;
+
 function MyVerticallyCenteredModal(props) {
-  const navigate = useNavigate();
+
   const {http,setToken} = AuthUser();
-  const [name,setName] = useState();
-  const [email,setEmail] = useState();
   const [event,setEvent] = useState();
-  const [phone,setPhone] = useState();
+  
+  useEffect( () => {
+    var tokenUser = sessionStorage.getItem('token')
+    if (tokenUser != null) {
+      http.post('/me').then((res)=>{
+        name = res.data.name;
+        email = res.data.email;
+        phone = res.data.phone;
+      });
+    }
+  }, []);
 
   const submitForm = (e) =>{
-    // api call
-    // e.preventDefault();
-    // http.post('/register',{email:email,name:name,phone:phone}).then((res)=>{
-    //     navigate('/login')
-    // })
-}
+    alert('Formulario enviado');
+  }
+
   return (
     <Modal
       {...props}
@@ -36,15 +45,13 @@ function MyVerticallyCenteredModal(props) {
                     <div className="form-group">
                         <label>Nombre completo*</label>
                         <input type="name" className="form-control" placeholder="Nombre completo"
-                            onChange={e=>setName(e.target.value)}
-                        id="name" required/>
+                        id="name" defaultValue={name} readOnly required/>
                     </div>
 
                     <div className="form-group mt-3">
                         <label>Correo electrónico*</label>
                         <input type="email" className="form-control" placeholder="Email"
-                            onChange={e=>setEmail(e.target.value)}
-                        id="email" required/>
+                        id="email" defaultValue={email} readOnly required/>
                     </div>
 
                     <div className="form-group mt-3">
@@ -52,8 +59,7 @@ function MyVerticallyCenteredModal(props) {
                         <div className="prefixGroup">
                             <span className="prefixNum">+52</span>
                             <input type="tel" className="form-control prefixInput" placeholder="Número de telefóno"
-                                onChange={e=>setPhone(e.target.value)}
-                                id="telphone" required/>
+                                id="telphone" defaultValue={phone} readOnly required/>
                         </div>
                     </div>
 
@@ -90,10 +96,21 @@ function MyVerticallyCenteredModal(props) {
 
 function Contratar() {
   const [modalShow, setModalShow] = useState(false);
+  const navigate = useNavigate();
+
+  const submitForm = (e) =>{
+    var tokenUser = sessionStorage.getItem('token')
+    if (tokenUser != null) {
+      console.log(tokenUser);
+      setModalShow(true);
+    }else{
+      navigate('/login');
+    }
+}
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button variant="primary" onClick={() => submitForm()}>
         Contratar
       </Button>
 
