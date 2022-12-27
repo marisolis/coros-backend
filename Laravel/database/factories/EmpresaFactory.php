@@ -19,6 +19,7 @@ class EmpresaFactory extends Factory
         return [
             'name' =>$this->faker->company(),
             'num_Telefono'=>$this->faker->phoneNumber(),
+            'imagen'=>$this->faker->url(),
             'informacion'=>$this->faker->text()
         ];
     }

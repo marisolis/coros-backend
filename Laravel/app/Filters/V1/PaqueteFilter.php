@@ -11,7 +11,9 @@ class PaqueteFilter extends ApiFilter {
     'name' => ['eq'],
     'precio'=>['eq', 'lt', 'gt', 'lte', 'gte'],
     'descripcion'=>['eq'],
-    'archivos'=>['eq']
+    'imagen'=>['eq'],
+    'video'=>['eq'],
+    'audio'=>['eq']
   ];
 
   protected $columnMap = [

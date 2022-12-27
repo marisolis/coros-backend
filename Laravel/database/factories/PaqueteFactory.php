@@ -21,7 +21,9 @@ class PaqueteFactory extends Factory
             'empresa_id'=> Empresa::factory(),
             'name' =>$this->faker->domainName(),
             'precio'=>$this->faker->numberBetween(100,10000),
-            'archivos'=>$this->faker->url(),
+            'imagen'=>$this->faker->url(),
+            'audio'=>$this->faker->url(),
+            'video'=>$this->faker->url(),
             'descripcion'=>$this->faker->text()
         ];
     }

@@ -20,7 +20,9 @@ class PaqueteResource extends JsonResource
             'name'=>$this->name,
             'precio'=>$this->precio,
             'descripcion'=>$this->descripcion,
-            'archivos'=>$this->archivos
+            'imagen'=>$this->imagen,
+            'video'=>$this->video,
+            'audio'=>$this->audio
         ];
     }
 }

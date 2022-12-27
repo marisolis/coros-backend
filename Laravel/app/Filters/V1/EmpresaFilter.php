@@ -9,6 +9,7 @@ class EmpresaFilter extends ApiFilter {
   protected $safeParms  = [
     'name' => ['eq'],
     'num_Telefono'=>['eq'],
+    'imagen'=>['eq'],
     'informacion'=>['eq']
   ];
 
