@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Filters\V1\PaqueteFilter;
 use App\Models\Paquete;
-use App\Http\Requests\StorePaqueteRequest;
-use App\Http\Requests\UpdatePaqueteRequest;
+use App\Http\Requests\V1\UpdatePaqueteRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\PaqueteCollection;
 use App\Http\Resources\V1\PaqueteResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Arr;
+use App\Http\Requests\V1\BulkStorePaqueteRequest;
+use App\Http\Requests\V1\StorePaqueteRequest;
 
 class PaqueteController extends Controller
 {
@@ -36,16 +38,6 @@ class PaqueteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StorePaqueteRequest  $request
@@ -53,7 +45,15 @@ class PaqueteController extends Controller
      */
     public function store(StorePaqueteRequest $request)
     {
-        //
+        return new PaqueteResource(Paquete::create($request->all()));
+    }
+
+    public function bulkStore(BulkStorePaqueteRequest $request){
+        $bulk = collect($request->all())->map(function($arr, $key){
+            return Arr::except($arr, ['empresaId']);
+        });
+
+        Paquete::insert($bulk->toArray());
     }
 
     /**
@@ -68,17 +68,6 @@ class PaqueteController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Paquete  $paquete
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Paquete $paquete)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatePaqueteRequest  $request
@@ -87,7 +76,7 @@ class PaqueteController extends Controller
      */
     public function update(UpdatePaqueteRequest $request, Paquete $paquete)
     {
-        //
+        $paquete->update($request->all());
     }
 
     /**
