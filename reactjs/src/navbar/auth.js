@@ -41,7 +41,7 @@ function Auth() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/dashboard">
-                  Mi perfil
+                  Perfil
                 </a>
               </li>
             </ul>

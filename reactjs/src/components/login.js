@@ -17,10 +17,10 @@ export default function Login() {
   return (
     <div className="row justify-content-center pt-5 mastheadBg">
       <div className="col-sm-4">
-        <form onSubmit={submitForm} className="card p-4">
-          <h1 className="text-center mb-3">Iniciar sesión </h1>
+        <form onSubmit={submitForm} className="card p-4 shadow">
+          <h1 className="text-center mb-3">Iniciar sesión</h1>
           <div className="form-group">
-            <label>Correo electrónico:</label>
+            <label>Correo electrónico*</label>
             <input
               type="email"
               className="form-control"
@@ -30,7 +30,7 @@ export default function Login() {
             />
           </div>
           <div className="form-group mt-3">
-            <label>Contraseña:</label>
+            <label>Contraseña*</label>
             <input
               type="password"
               className="form-control"

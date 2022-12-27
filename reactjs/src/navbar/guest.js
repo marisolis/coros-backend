@@ -4,6 +4,7 @@ import Login from "../components/login";
 import Register from "../components/register";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
+import RegisterVendor from "../components/RegisterVendor";
 
 function Guest() {
   return (
@@ -50,6 +51,7 @@ function Guest() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/registervendor" element={<RegisterVendor />} />
           <Route path="/paquete/:id" element={<Paquete />} />
           <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>

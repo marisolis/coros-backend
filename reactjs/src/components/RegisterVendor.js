@@ -2,21 +2,18 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import AuthUser from './AuthUser';
 
-export default function Register() {
+export default function RegisterVendor() {
     const navigate = useNavigate();
     const {http,setToken} = AuthUser();
-    const [name,setName] = useState(null);
-    const [email,setEmail] = useState(null);
-    const [password,setPassword] = useState(null);
-    const [phone,setPhone] = useState(null);
+    const [name,setName] = useState();
+    const [email,setEmail] = useState();
+    const [password,setPassword] = useState();
+    const [phone,setPhone] = useState();
 
     const submitForm = (e) =>{
         // api call
-        if (name != null && email != null && password != null && phone != null) {
-            peticionForm();
-        }else{
+        peticionForm();
 
-        }
     }
 
     const peticionForm = () => {
@@ -27,16 +24,34 @@ export default function Register() {
     }
 
     return(
-        <div className="row justify-content-center pt-5 mastheadBg">
+        <div className="row justify-content-center pt-5">
             <div className="col-sm-4">
-                <form onSubmit={submitForm} className="card p-4 shadow">
-                    <h1 className="text-center mb-3">Registrarse </h1>
-
+                <form onSubmit={submitForm} className="card p-4 mb-5 shadow">
+                    <h1 className="text-center mb-3">Registrarse (Proveedor)</h1>
+            
                     <div className="form-group">
                         <label>Nombre completo*</label>
                         <input type="name" className="form-control" placeholder="Nombre completo"
                             onChange={e=>setName(e.target.value)}
                         id="email" required/>
+                    </div>
+
+                    <div className="form-group mt-3">
+                        <label>Nombre de proveedor*</label>
+                        <input type="name" className="form-control" placeholder="Nombre de proveedor"
+                            onChange={e=>setName(e.target.value)}
+                        id="email" required/>
+                    </div>
+                    <div className="form-group mt-3">
+                        <label>Descripción de proveedor*</label>
+                        <textarea type="name" className="form-control" placeholder="Descripción de proveedor"
+                            onChange={e=>setName(e.target.value)}
+                        id="email" required/>
+                    </div>
+
+                    <div className="form-group mt-3">
+                        <label>Imagen de proveedor*</label>
+                        <input className="form-control" accept="image/png, image/jpeg" type="file" id="img"/>
                     </div>
 
                     <div className="form-group mt-3">
@@ -65,7 +80,7 @@ export default function Register() {
 
                     <button type="submit" onClick={submitForm} onSubmit={submitForm} className="btn btn-primary mt-4">Crear cuenta</button>
                     <a className="form-link mt-4 text-center" href="/login">¿Ya tienes una cuenta?</a>
-                    <a className="form-link mt-2 text-center" href="/registervendor">¿Quieres ser un proveedor?</a>
+                    <a className="form-link mt-2 text-center" href="/register">¿Quieres ser un cliente?</a>
                 </form>
             </div>
         </div>

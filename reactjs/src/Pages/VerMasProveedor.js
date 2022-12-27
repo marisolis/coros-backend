@@ -27,7 +27,7 @@ function VerMasProveedor() {
           <a className="btn backBtn" onClick={() => navigate(-1)}>
             Regresar
           </a>
-          <div className="card p-2 paquete-post d-flex flex-row">
+          <div className="card p-2 paquete-post d-flex flex-row shadow">
             <div className="flex-column">
               <div className="imagen-paquete-container justify-content-center">
                 <img className="imagen-paquete" src={paqImg} alt="Imagen"></img>
@@ -44,7 +44,7 @@ function VerMasProveedor() {
                 </div>
               </div>
             </div>
-            <div className="paquete-info-container col-sm-3 ms-3">
+            <div className="paquete-info-container ms-3">
               <div className="card p-4 paquete-info">
                 {proveedor != null ? (
                   <div>
