@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import AuthUser from './AuthUser';
 
 export default function Register() {
@@ -12,10 +14,11 @@ export default function Register() {
 
     const submitForm = (e) =>{
         // api call
+        e.preventDefault();
         if (name != null && email != null && password != null && phone != null) {
             peticionForm();
         }else{
-
+            handleShow();
         }
     }
 
@@ -26,8 +29,24 @@ export default function Register() {
         })
     }
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return(
         <div className="row justify-content-center pt-5 mastheadBg">
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Notificación</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Rellene todos los campos correctamente por favor.</Modal.Body>
+                <Modal.Footer>
+                <Button variant="primary" onClick={handleClose}>
+                    Aceptar
+                </Button>
+                </Modal.Footer>
+            </Modal>
             <div className="col-sm-4">
                 <form onSubmit={submitForm} className="card p-4 shadow">
                     <h1 className="text-center mb-3">Registrarse </h1>
@@ -36,7 +55,7 @@ export default function Register() {
                         <label>Nombre completo*</label>
                         <input type="name" className="form-control" placeholder="Nombre completo"
                             onChange={e=>setName(e.target.value)}
-                        id="email" required/>
+                        id="name" required/>
                     </div>
 
                     <div className="form-group mt-3">
