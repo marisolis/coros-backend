@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Contratar from "./Contratar";
 
+
 function VerMasPaquete() {
 
   let navigate = useNavigate();
@@ -21,12 +22,12 @@ function VerMasPaquete() {
     axios.get(`http://127.0.0.1:8000/api/v1/empresas/${paquete.empresa_id}`)
     .then(response => {
       document.getElementById('proveedorName').textContent = response.data.data.name;
+      localStorage.setItem('vendorEmail',response.data.data.email);
     })
     .catch((error => {
       console.log(error.response);
     }))
   }
-
 
   return (
     <div className="container-fluid mw-100 m-0 p-0">
