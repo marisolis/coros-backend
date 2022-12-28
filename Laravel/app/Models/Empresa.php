@@ -14,6 +14,7 @@ class Empresa extends Model
         'num_Telefono',
         'informacion',
         'email',
+        'imagen',
     ];
 
     public function paquetes(){

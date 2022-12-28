@@ -31,9 +31,4 @@ class StoreEmpresaRequest extends FormRequest
             'imagen'=>['nullable'],
         ];
     }
-    protected function prepareForValidation() {
-        $this->merge([
-            'num_Telefono' => $this->numTelefono
-        ]);
-    }
 }

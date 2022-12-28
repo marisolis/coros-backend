@@ -2,11 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AuthUser from './components/AuthUser';
 import Guest from './navbar/guest';
 import Auth from './navbar/auth';
+import AuthVendor from "./navbar/AuthVendor";
 import jwtDecode from 'jwt-decode';
 import { useEffect } from "react";
 
 function App() {
   const { logout } = AuthUser();
+  const userString = sessionStorage.getItem('user');
+  const user_detail = JSON.parse(userString);
   const token = sessionStorage.getItem("token");
 
   const checkTokenExpiration = () => {
@@ -29,6 +32,11 @@ function App() {
   if(!getToken()){
     return <Guest />
   }
+
+  if (user_detail.type == 'vendor'){
+    return <AuthVendor />
+   }
+
   return (
       <Auth />
   );

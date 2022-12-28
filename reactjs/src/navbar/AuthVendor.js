@@ -6,7 +6,7 @@ import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
 
-function Auth() {
+function AuthVendor() {
   const { token, logout } = AuthUser();
 
   const logoutUser = () => {
@@ -41,7 +41,7 @@ function Auth() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/dashboard">
+                <a className="nav-link" href="/vendordashboard">
                   Perfil
                 </a>
               </li>
@@ -52,7 +52,7 @@ function Auth() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/vendordashboard" element={<VendorDashboard />} />
           <Route path="/paquete/:id" element={<Paquete />} />
           <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
@@ -61,4 +61,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default AuthVendor;
