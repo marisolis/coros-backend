@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import AuthUser from './AuthUser';
 import './styles.css';
 
-export default function Dashboard() {
+export default function VendorDashboard() {
     
     const {token,logout} = AuthUser();
     const {http} = AuthUser();
@@ -28,7 +28,7 @@ export default function Dashboard() {
         <div className='d-flex'>
             <div className="col-sm-3 p-5">
                 <div className="perfil card p-4 shadow style={{maxHeight: '800px', minHeight: '440px'}}">
-                    <h1 className="text-center">Perfil</h1>
+                    <h1 className="text-center">Perfil Proveedor</h1>
 
                     <div className="form-group mt-3">
                         <h4>Nombre</h4>

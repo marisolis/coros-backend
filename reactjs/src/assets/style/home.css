@@ -27,7 +27,8 @@
 
 @media screen and (max-width: 1550px) {
   .lista-personajes {
-    gap: 0rem;
+    grid-template: auto / repeat(3, 1fr);
+    gap: 3em;
   }
 }
 
@@ -47,9 +48,12 @@
 
 @media screen and (max-width: 980px) {
   .lista-personajes {
-    grid-template: auto / repeat(2, 1fr);
-    gap: 7em;
+    flex-direction: column;
+    display: inline-flex;
+    align-items: center !important;
+
   }
+  
 }
 
 @media screen and (max-width: 780px) {

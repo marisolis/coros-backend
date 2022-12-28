@@ -32,4 +32,6 @@ Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], funct
     Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('paquetes',PaqueteController::class);
     Route::apiResource('fechas',FechaController::class);
+
+    Route::post('paquetes/bulk',['uses'=>'PaqueteController@bulkStore']);
 });

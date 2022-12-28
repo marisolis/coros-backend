@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function AuthUser(){
+
     const navigate = useNavigate();
 
     const getToken = () =>{
@@ -17,6 +18,11 @@ export default function AuthUser(){
         return user_detail;
     }
 
+    const getUserType = () =>{
+        const userString = sessionStorage.getItem('user');
+        const user_detail = JSON.parse(userString);
+        return user_detail;
+    }
 
 
     const [token,setToken] = useState(getToken());
@@ -28,7 +34,14 @@ export default function AuthUser(){
 
         setToken(token);
         setUser(user);
-        navigate('/dashboard');
+
+        if (user.type == 'client'){
+            navigate('/dashboard');
+        }else if (user.type == 'vendor'){
+            navigate('/vendordashboard');
+        }else{
+            navigate('/login');
+        }
     }
 
     const logout = () => {

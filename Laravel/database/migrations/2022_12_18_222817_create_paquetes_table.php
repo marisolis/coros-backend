@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer('empresa_id');
             $table->string('name');
             $table->float('precio');
-            $table->string('archivos')->nullable();
+            $table->string('imagen')->nullable();
+            $table->string('audio')->nullable();
+            $table->string('video')->nullable();
             $table->string('descripcion');
             $table->timestamps();
         });

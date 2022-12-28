@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Dashboard from "../components/dashboard";
+import VendorDashboard from "../components/VendorDashboard";
 import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
@@ -41,7 +42,7 @@ function Auth() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/dashboard">
-                  Mi perfil
+                  Perfil
                 </a>
               </li>
             </ul>

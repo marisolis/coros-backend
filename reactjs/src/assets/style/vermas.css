@@ -32,7 +32,11 @@
 @media screen and (max-width: 1550px) {
   .lista-personajes-vermas {
     grid-template: auto / repeat(3, 1fr);
-    gap: 6rem;
+    gap: 4rem;
+  }
+
+  .container{
+    zoom: 88%;
   }
 }
 
@@ -41,12 +45,19 @@
     grid-template: auto / repeat(3, 1fr);
     gap: 0em;
   }
+  .container{
+    zoom: 96%;
+  }
 }
 
 @media screen and (max-width: 1100px) {
   .lista-personajes-vermas {
     grid-template: auto / repeat(2, 1fr);
     gap: 11em;
+  }
+
+  .container{
+    zoom: 99%;
   }
 }
 

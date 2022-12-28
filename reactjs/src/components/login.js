@@ -14,13 +14,23 @@ export default function Login() {
     });
   };
 
+  function showPass() {
+    var x = document.getElementById("pwd");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+
   return (
     <div className="row justify-content-center pt-5 mastheadBg">
       <div className="col-sm-4">
-        <form onSubmit={submitForm} className="card p-4">
-          <h1 className="text-center mb-3">Iniciar sesión </h1>
+        <form onSubmit={submitForm} className="card p-4 shadow">
+          <h1 className="text-center mb-3">Iniciar sesión</h1>
           <div className="form-group">
-            <label>Correo electrónico:</label>
+            <label className="form-label">Correo electrónico*</label>
             <input
               type="email"
               className="form-control"
@@ -30,15 +40,24 @@ export default function Login() {
             />
           </div>
           <div className="form-group mt-3">
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
-              id="pwd"
-            />
+            <label className="form-label">Contraseña*</label>
+            <div className="input-group">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Contraseña"
+                onChange={(e) => setPassword(e.target.value)}
+                id="pwd"
+              />
+            </div>
+            <input className="mt-3" type="checkbox" onClick={showPass}/> Mostrar contraseña
+            
           </div>
+
+          <div className="form-group">
+            <input className="mt-3" type="checkbox" defaultChecked disabled/> Recuérdame
+          </div>
+          
           <button
             type="submit"
             onClick={submitForm}

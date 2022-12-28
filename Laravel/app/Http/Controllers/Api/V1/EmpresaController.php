@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Filters\V1\EmpresaFilter;
 use App\Models\Empresa;
-use App\Http\Requests\StoreEmpresaRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateEmpresaRequest;
+use App\Http\Requests\V1\StoreEmpresaRequest;
+use App\Http\Requests\V1\UpdateEmpresaRequest;
 use App\Http\Resources\V1\EmpresaResource;
 use App\Http\Resources\V1\EmpresaCollection;
 use Illuminate\Http\Request;
@@ -39,17 +39,6 @@ class EmpresaController extends Controller
        return new EmpresaCollection($empresas->paginate()->appends($request->query()));
 }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -58,7 +47,7 @@ class EmpresaController extends Controller
      */
     public function store(StoreEmpresaRequest $request)
     {
-        //
+        return new EmpresaResource(Empresa::create($request->all()));
     }
 
     /**
@@ -83,17 +72,6 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Empresa  $empresa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Empresa $empresa)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateEmpresaRequest  $request
@@ -102,7 +80,7 @@ class EmpresaController extends Controller
      */
     public function update(UpdateEmpresaRequest $request, Empresa $empresa)
     {
-        //
+        $empresa->update($request->all());
     }
 
     /**

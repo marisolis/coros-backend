@@ -9,6 +9,13 @@ class Paquete extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'empresa_id',
+        'name',
+        'precio',
+        'descripcion',
+    ];
+
     public function empresa(){
         return $this->belongsTo(Empresa::class);
     }

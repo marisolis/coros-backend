@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('num_Telefono');
             $table->string('informacion');
+            $table->string('email');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

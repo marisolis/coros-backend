@@ -9,6 +9,14 @@ class Empresa extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'num_Telefono',
+        'informacion',
+        'email',
+        'imagen',
+    ];
+
     public function paquetes(){
         return $this->hasMany(Paquete::class);
     }

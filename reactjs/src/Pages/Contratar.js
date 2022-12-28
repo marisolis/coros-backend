@@ -87,7 +87,7 @@ function MyVerticallyCenteredModal(props) {
                 </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='secondary' onClick={props.onHide}>Cerrar</Button>
+        <Button variant='secondary' onClick={props.onHide}>Cancelar</Button>
         <Button variant='primary' onClick={submitForm}>Contratar</Button>
       </Modal.Footer>
     </Modal>
@@ -101,7 +101,6 @@ function Contratar() {
   const submitForm = (e) =>{
     var tokenUser = sessionStorage.getItem('token')
     if (tokenUser != null) {
-      console.log(tokenUser);
       setModalShow(true);
     }else{
       navigate('/login');

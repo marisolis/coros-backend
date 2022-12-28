@@ -36,7 +36,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        $credentials = request(['name','email','phone', 'password']);
+        $credentials = request(['name','email','phone', 'password','type']);
         $credentials['password'] = bcrypt($credentials['password']);
         User::create($credentials);
 

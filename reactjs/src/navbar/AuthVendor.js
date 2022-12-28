@@ -1,17 +1,25 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
-import Login from "../components/login";
-import Register from "../components/register";
+import Dashboard from "../components/dashboard";
+import VendorDashboard from "../components/VendorDashboard";
+import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
-import RegisterVendor from "../components/RegisterVendor";
 
-function Guest() {
+function AuthVendor() {
+  const { token, logout } = AuthUser();
+
+  const logoutUser = () => {
+    if (token !== undefined) {
+      logout();
+    }
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-0 py-2">
         <div className="container px-0 mx-5 mw-100">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Brand
           </a>
           <button
@@ -33,13 +41,8 @@ function Guest() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/Login">
-                  Iniciar sesión
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Register">
-                  Crear cuenta
+                <a className="nav-link" href="/vendordashboard">
+                  Perfil
                 </a>
               </li>
             </ul>
@@ -49,9 +52,7 @@ function Guest() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/registervendor" element={<RegisterVendor />} />
+          <Route path="/vendordashboard" element={<VendorDashboard />} />
           <Route path="/paquete/:id" element={<Paquete />} />
           <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
@@ -60,4 +61,4 @@ function Guest() {
   );
 }
 
-export default Guest;
+export default AuthVendor;
