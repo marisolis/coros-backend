@@ -19,28 +19,5 @@ class contratacionesController extends Controller
         Contrataciones::create($Contrato);
 
         Mail::to($Contrato['correo'])->send(new correo($Contrato['nombre_paquete'],$Contrato['nombre_cliente'],$Contrato['Tipo_evento'],$Contrato['Fecha'],$Contrato['Hora'],$Contrato['Lugar']));
-
-    }
-
-    public function store(Request $request)
-    {
-        //sirve para guardar datos en la bd
-        $contrato = new Contrataciones();
-        $contrato->id_paquete = $request->post('id_paquete');
-        $contrato->id_cliente = $request->post('id_cliente');
-        $contrato->Tipo_evento = $request->post('Tipo_evento');
-        $contrato->Forma_de_pago = $request->post('Forma_de_pago');
-        $contrato->Fecha = $request->post('Fecha');
-        $contrato->Hora = $request->post('Hora');
-        $contrato->Lugar = $request->post('Lugar');
-        $contrato->save();
-
-        $mensaje=[
-            'title' => 'Nuevo Contrato Recibido',
-            'body' => 'prueba tasdasd'
-        ];
-
-        Mail::to("flendogga09@gmail.com")->send(new correo($mensaje));
-        return redirect()->back();
     }
 }
