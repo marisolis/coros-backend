@@ -15,9 +15,9 @@ use App\Http\Controllers\Controller;
 class contratacionesController extends Controller
 {
     public function index(Request $request){
-        $Contrato = request(['id_paquete','nombre_paquete','id_cliente','nombre_cliente','Tipo_evento', 'Forma_de_pago', 'Fecha', 'Hora', 'Lugar','fecha_contrato','correo']);
+        $Contrato = request(['id_paquete','nombre_paquete','id_cliente','nombre_cliente','Tipo_evento', 'Forma_de_pago', 'Fecha', 'Hora', 'Lugar','fecha_contrato','correo','correo_cliente']);
         Contrataciones::create($Contrato);
 
-        Mail::to($Contrato['correo'])->send(new correo($Contrato['nombre_paquete'],$Contrato['nombre_cliente'],$Contrato['Tipo_evento'],$Contrato['Fecha'],$Contrato['Hora'],$Contrato['Lugar']));
+        Mail::to($Contrato['correo'])->send(new correo($Contrato['nombre_paquete'],$Contrato['nombre_cliente'],$Contrato['Tipo_evento'],$Contrato['Fecha'],$Contrato['Hora'],$Contrato['Lugar'],$Contrato['correo_cliente']));
     }
 }

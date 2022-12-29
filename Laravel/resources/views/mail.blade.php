@@ -9,6 +9,9 @@
       <label for="comment">Nombre del Usuario</label>
       <label for="comment">   {{ $nombre_cliente }}</label>
       <br>
+      <label for="comment">Correo del Usuario</label>
+      <label for="comment">   {{ $correo_cliente }}</label>
+      <br>
       <label for="comment">Paquete Requerido</label>
       <label for="comment">    {{ $nombre_paquete }}</label>
       <br>
