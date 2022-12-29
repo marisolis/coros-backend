@@ -45,9 +45,30 @@ class EmpresaController extends Controller
      * @param  \App\Http\Requests\StoreEmpresaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEmpresaRequest $request)
-    {
-        return new EmpresaResource(Empresa::create($request->all()));
+    // public function store(StoreEmpresaRequest $request)
+    // {
+    //     return new EmpresaResource(Empresa::create($request->all()));
+    // }
+
+    public function store(Request $request){
+        $newEmpresa = new Empresa();
+
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $destinationPath = 'images/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
+            $newEmpresa->imagen = $destinationPath . $filename;
+        }
+
+        $newEmpresa->name = $request->name;
+        $newEmpresa->num_Telefono=$request->num_Telefono;
+        $newEmpresa->informacion=$request->informacion;
+        $newEmpresa->email=$request->email;
+
+        $newEmpresa->save();
+
+        return $newEmpresa;
     }
 
     /**
