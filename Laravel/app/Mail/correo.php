@@ -49,6 +49,6 @@ class correo extends Mailable
         $Fecha="Fecha";
         $Hora="Hora";
         $Lugar="Lugar";
-        return $this->view('mail',['nombre_cliente'=>$nombre_cliente,'nombre_paquete'=>$nombre_paquete,'Tipo_evento'=>$Tipo_evento,'Fecha'=>$Fecha,'Hora'=>$Hora,'Lugar'=>$Lugar]);
+        return $this->view('mail',['nombre_cliente'=>$nombre_cliente,'nombre_paquete'=>$nombre_paquete,'Tipo_evento'=>$Tipo_evento,'Fecha'=>$Fecha,'Hora'=>$Hora,'Lugar'=>$Lugar])->subject("Contrato Nuevo")->from("203722@ids.upchiapas.edu.mx","EstanciaII");
     }
 }
