@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('Fecha');
             $table->time('Hora');
             $table->string('Lugar');
-            $table->date('fecha_apartado');
+            $table->timestamp('fecha_contrato');
 
             $table->foreign('id_paquete')->references('id')->on('paquetes');
             $table->foreign('id_cliente')->references('id')->on('users');

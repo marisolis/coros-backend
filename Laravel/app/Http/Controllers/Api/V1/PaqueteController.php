@@ -43,9 +43,42 @@ class PaqueteController extends Controller
      * @param  \App\Http\Requests\StorePaqueteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePaqueteRequest $request)
+    public function store(Request $request)
     {
-        return new PaqueteResource(Paquete::create($request->all()));
+        $newPaquete = new Paquete();
+
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $destinationPath = 'images/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
+            $newPaquete->imagen = $destinationPath . $filename;
+        }
+
+        if($request->hasFile('video')){
+            $file = $request->file('video');
+            $destinationPath = 'videos/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('video')->move($destinationPath, $filename);
+            $newPaquete->imagen = $destinationPath . $filename;
+        }
+
+        if($request->hasFile('audio')){
+            $file = $request->file('audio');
+            $destinationPath = 'audios/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('audio')->move($destinationPath, $filename);
+            $newPaquete->imagen = $destinationPath . $filename;
+        }
+
+        $newPaquete->empresa_id = $request->empresa_id;
+        $newPaquete->name=$request->name;
+        $newPaquete->precio=$request->precio;
+        $newPaquete->descripcion=$request->descripcion;
+
+        $newPaquete->save();
+
+        return $newPaquete;
     }
 
     public function bulkStore(BulkStorePaqueteRequest $request){
