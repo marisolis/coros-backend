@@ -1,78 +1,165 @@
 .lista-personajes-vermas {
   display: grid;
-  grid-template: auto / 1fr;
-  gap: 3rem;
-  width: 82%;
-  margin-left: 9%;
-  margin-right: 9%;
-  margin-top: 2%;
+  max-width: 82%;
+  margin: 0 auto;
+  margin-top: 3%;
   margin-bottom:4%;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 0fr));
+  padding: 5rem;
+  gap: 1em;
 }
 
-@media screen and (min-width: 600px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(2, 1fr);
-    
+
+
+
+
+/* Responsive package image */
+
+.imagen-paquete-container-p{
+  width: 1140px;
+  height: 650px;
+ }
+
+ @media screen and (max-width: 1745px) {
+  .imagen-paquete-container-p{
+    width: 1080px;
+    height: 610px;
+   }
+
+   .paquete-info-p h1{
+    font-size: 30px !important;
+  }
+  .paquete-info-p h5{
+    font-size: 20px !important;
+  }
+  .paquete-info-p h6{
+    font-size: 16px !important;
+  }
+
+}
+
+@media screen and (max-width: 1670px) {
+  .imagen-paquete-container-p{
+    width: 1040px;
+    height: 590px;
+   }
+}
+
+@media screen and (max-width: 1620px) {
+  .imagen-paquete-container-p{
+    width: 1000px;
+    height: 570px;
+   }
+}
+
+@media screen and (max-width: 1575px) {
+  .imagen-paquete-container-p{
+    width: 950px;
+    height: 550px;
+   }
+    .paquete-info-p h1{
+      font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 1515px) {
+  .imagen-paquete-container-p{
+    width: 900px;
+    height: 520px;
+   }
+}
+
+@media screen and (max-width: 1450px) {
+  .imagen-paquete-container-p{
+    width: 850px;
+    height: 490px;
+   }
+}
+
+@media screen and (max-width: 1395px) {
+  .imagen-paquete-container-p{
+    width: 820px;
+    height: 470px;
+   }
+}
+
+@media screen and (max-width: 1365px) {
+  .imagen-paquete-container-p{
+    width: 800px;
+    height: 470px;
+   }
+
+}
+
+@media screen and (max-width: 1335px) {
+  .imagen-paquete-container-p{
+    width: 750px;
+    height: 430px;
+   }
+}
+
+@media screen and (max-width: 1275px) {
+  .imagen-paquete-container-p{
+    width: 700px;
+    height: 400px;
+   }
+}
+
+@media screen and (max-width: 1215px) {
+  .imagen-paquete-container-p{
+    width: 650px;
+    height: 370px;
+   }
+}
+
+@media screen and (max-width: 1150px) {
+  .imagen-paquete-container-p{
+    width: 600px;
+    height: 340px;
+   }
+}
+
+@media screen and (max-width: 1095px) {
+  .imagen-paquete-container-p{
+    width: 550px;
+    height: 310px;
+   }
+
+  .paquete-info-p h1{
+    font-size: 26px !important;
+  }
+  .paquete-info-p h5{
+    font-size: 18px !important;
+  }
+  .paquete-info-p h6{
+    font-size: 14px !important;
   }
 }
 
-@media screen and (min-width: 1000px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(4, 1fr);
-    gap: 3em;
-  }
-}
 
-@media screen and (max-width: 1750px) {
-  .lista-personajes-vermas {
-    gap: 0rem;
-  }
-}
 
-@media screen and (max-width: 1550px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(3, 1fr);
-    gap: 4rem;
+@media screen and (max-width: 1050px) {
+  .paquete-post-p{
+    flex-direction: column !important;
   }
 
-  .container{
-    zoom: 88%;
-  }
-}
+  .imagen-paquete-container-p{
+    width: 100%;
+    height: auto;
+    background-color: red;
+    }
 
-@media screen and (max-width: 1350px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(3, 1fr);
-    gap: 0em;
+  .paquete-info-container-p{
+    width: 100%;
+    margin-left: 0 !important;
   }
-  .container{
-    zoom: 96%;
+  .paquete-info-p h1{
+    font-size: 32px !important;
   }
-}
-
-@media screen and (max-width: 1100px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(2, 1fr);
-    gap: 11em;
+  .paquete-info-p h5{
+    font-size: 22px !important;
   }
-
-  .container{
-    zoom: 99%;
-  }
-}
-
-@media screen and (max-width: 980px) {
-  .lista-personajes-vermas {
-    grid-template: auto / repeat(2, 1fr);
-    gap: 5em;
-  }
-}
-
-@media screen and (max-width: 780px) {
-  .lista-personajes-vermas {
-    flex-direction: column;
-    display: inline-flex;
-    align-items: center !important;
-
+  .paquete-info-p h6{
+    font-size: 16px !important;
   }
 }

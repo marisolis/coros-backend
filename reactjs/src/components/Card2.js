@@ -4,7 +4,7 @@ import './styles.css'
 
 export const Card = ({ paquete }) => {
   return (
-    <div className="card shadow" style={{ width: "22rem" }}>
+    <div className="card shadow" style={{ width: "22em" }}>
       <img className="card-img-top" src={cardImg} alt="Card cap"></img>
       <div className="card-body">
         <h5 className="card-title">{paquete.name}</h5>
