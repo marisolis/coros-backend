@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import AuthUser from "./AuthUser";
 
 export default function Login() {
@@ -9,10 +11,22 @@ export default function Login() {
   const submitForm = (e) => {
     // api call
     e.preventDefault();
+    document.getElementById('loader-line').style.visibility = 'visible';
+    
     http.post("/login", { email: email, password: password }).then((res) => {
       setToken(res.data.user, res.data.access_token);
-    });
+    }).catch((error) => {
+        console.log(error.response);
+        if (error.response.status === 401){
+            handleShow();
+        }
+      })
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function showPass() {
     var x = document.getElementById("pwd");
@@ -26,8 +40,20 @@ export default function Login() {
 
   return (
     <div className="row justify-content-center pt-5 mastheadBg">
-      <div className="col-sm-4">
-        <form onSubmit={submitForm} className="card p-4 shadow">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        <Modal.Title>Notificación</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Datos incorrectos</Modal.Body>
+        <Modal.Footer>
+        <Button variant="primary" onClick={handleClose}>
+            Aceptar
+        </Button>
+        </Modal.Footer>
+      </Modal>
+      <div className="col-sm-4 login-container ps-0 pe-0">
+      <div id='loader-line' className="loader-line" style={{visibility: 'hidden'}}></div>
+        <form onSubmit={submitForm} className="card login p-4 shadow">
           <h1 className="text-center mb-3">Iniciar sesión</h1>
           <div className="form-group">
             <label className="form-label">Correo electrónico*</label>

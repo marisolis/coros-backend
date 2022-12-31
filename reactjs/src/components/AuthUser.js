@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AuthUser(){
 
+    const sleep = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+
     const navigate = useNavigate();
 
     const getToken = () =>{
@@ -34,7 +38,7 @@ export default function AuthUser(){
 
         setToken(token);
         setUser(user);
-
+        sleep(4000);
         if (user.type == 'client'){
             navigate('/dashboard');
         }else if (user.type == 'vendor'){

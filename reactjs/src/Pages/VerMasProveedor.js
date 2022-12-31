@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { proveedorUnico } from "../Helpers/Proveedor";
 import { proveedorUnicoPaquetes } from "../Helpers/Proveedor";
-import "../assets/style/vermas.css";
+import '../assets/style/vermas.css';
 import paqImg from "../components/resources/TestBg2.jpg";
 import { Card } from "../components/Card2";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ function VerMasProveedor() {
 
     if (localStorage.getItem('vendorEmail')){
       localStorage.removeItem('vendorEmail');
+      localStorage.removeItem('vendorID');
     }
   
     if (localStorage.getItem('idPaquete')){
@@ -32,38 +33,27 @@ function VerMasProveedor() {
 
   return (
     <div className="container-fluid mw-100 m-0 p-0">
-      <div className="product-container">
         <div className="product d-flex justify-content-center">
           <div className="col-sm-10 p-3 post-container-p">
             <a className="btn backBtn" onClick={() => navigate(-1)}>
               Regresar
             </a>
             <div className="card p-2 paquete-post-p d-flex flex-row shadow">
-              <div className="flex-column">
+
                 <div className="imagen-paquete-container-p justify-content-center">
                   <img className="imagen-paquete" src={paqImg} alt="Imagen"></img>
                 </div>
-                <div className="resources-paquete d-flex flex-row p-3 justify-content-around">
-                  <div className="paquete-src d-flex justify-content-center mt-2">
-                    <h1>SRC</h1>
-                  </div>
-                  <div className="paquete-src d-flex justify-content-center mt-2">
-                    <h1>SRC</h1>
-                  </div>
-                  <div className="paquete-src d-flex justify-content-center mt-2">
-                    <h1>SRC</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="paquete-info-container-p ms-3">
-                <div className="card p-4 paquete-info-p">
+
+              <div className="paquete-info-container-p ms-2">
+                <div className="card p-4 paquete-info-p" style={{borderRadius: '0'}}>
                   {proveedor != null ? (
-                    <div>
+                    <div style={{margin: '0'}}>
                       <h1>{proveedor.name}</h1>
                       <h5 style={{ color: "gray" }}>{proveedor.email}</h5>
                       <h6 style={{ color: "gray" }}>Num. {proveedor.id}</h6>
-                      <p>{proveedor.informacion}</p>
-                      <h3>Fechas</h3>
+                      <div className="vendor-desc-container" style={{overflowY: 'auto', maxHeight: '350px', marginBottom: '10px'}}>
+                        <p className="vendor-desc">{proveedor.informacion}</p>
+                      </div>
                     </div>
                   ) : (
                     "No hay proveedores"
@@ -74,7 +64,7 @@ function VerMasProveedor() {
           </div>
         </div>
         {proveedor != null ? (
-        <h2 style={{marginLeft: '9%', marginTop: '1%'}}>Paquetes de {proveedor.name}</h2>
+        <h2 style={{marginLeft: '9%', marginTop: '2%'}}>Paquetes de {proveedor.name}</h2>
         ) : (
           "No hay proveedores"
         )}
@@ -85,8 +75,6 @@ function VerMasProveedor() {
               ))
             ): "No hay paquetes"}
         </div>
-      </div>
-
     </div>
   );
 }
