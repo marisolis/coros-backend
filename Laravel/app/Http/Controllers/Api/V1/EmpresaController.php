@@ -58,7 +58,7 @@ class EmpresaController extends Controller
             $destinationPath = 'images/';
             $filename = time() . '-' . $file->getClientOriginalName();
             $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
-            $newEmpresa->imagen = $destinationPath . $filename;
+            $newEmpresa->imagen = "http://127.0.0.1:8000/" . $destinationPath . $filename;
         }
 
         $newEmpresa->name = $request->name;
