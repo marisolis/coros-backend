@@ -14,26 +14,29 @@ class correo extends Mailable
     use Queueable, SerializesModels;
 
     public $nombre_cliente;
+    public $numero_telefono;
+    public $correo_cliente;
     public $nombre_paquete;
     public $Tipo_evento;
-    public $Fecha;
-    public $Hora;
     public $Lugar;
+    public $Fecha; 
+    public $Hora;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nombre_cliente, $nombre_paquete, $Tipo_evento, $Fecha, $Hora, $Lugar)
+    public function __construct($nombre_cliente, $numero_telefono, $correo_cliente, $nombre_paquete, $Tipo_evento, $Lugar, $Fecha, $Hora)
     {
         $this -> nombre_cliente = $nombre_cliente;
+        $this -> numero_telefono = $numero_telefono;
+        $this -> correo_cliente = $correo_cliente;
         $this -> nombre_paquete = $nombre_paquete;
         $this -> Tipo_evento = $Tipo_evento;
+        $this -> Lugar = $Lugar;
         $this -> Fecha = $Fecha;
         $this -> Hora = $Hora;
-        $this -> Lugar = $Lugar;
-        $this -> correo_cliente = $correo_cliente;
     }
 
     /**
@@ -45,12 +48,13 @@ class correo extends Mailable
      */
     public function build(){
         $nombre_cliente="nombre_cliente";
+        $numero_telefono="numero_telefono";
+        $correo_cliente="correo_cliente";
         $nombre_paquete="nombre_paquete";
         $Tipo_evento="Tipo_evento";
+        $Lugar="Lugar";
         $Fecha="Fecha";
         $Hora="Hora";
-        $Lugar="Lugar";
-        $correo_cliente="correo_cliente";
-        return $this->view('mail',['nombre_cliente'=>$nombre_cliente,'correo_cliente'=>$correo_cliente,'nombre_paquete'=>$nombre_paquete,'Tipo_evento'=>$Tipo_evento,'Fecha'=>$Fecha,'Hora'=>$Hora,'Lugar'=>$Lugar])->subject("Contrato Nuevo")->from("203722@ids.upchiapas.edu.mx","EstanciaII");
+        return $this->view('mail',['nombre_cliente'=>$nombre_cliente, $numero_telefono=>'numero_telefono','correo_cliente'=>$correo_cliente,'nombre_paquete'=>$nombre_paquete,'Tipo_evento'=>$Tipo_evento, 'Lugar'=>$Lugar,'Fecha'=>$Fecha,'Hora'=>$Hora])->subject("Contrato Nuevo")->from("203722@ids.upchiapas.edu.mx","EstanciaII");
     }
 }

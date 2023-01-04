@@ -25,8 +25,8 @@ export default function Dashboard() {
       }, []);
 
     return(
-        <div className='d-flex'>
-            <div className="col-sm-3 p-5">
+        <div className='d-flex dashboard'>
+            <div className="col-sm-3 p-5 perfil-container">
                 <div className="perfil card p-4 shadow style={{maxHeight: '800px', minHeight: '440px'}}">
                     <h1 className="text-center">Perfil</h1>
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
                 </div>
             </div>
-            <div className="col-sm-8 p-5">
+            <div className="col-sm-8 p-5 contrats-container">
                 <div className="contrats card p-4 shadow" style={{maxHeight: '800px', minHeight: '440px'}}>
 
                     <h1 className="text-center">Contratos</h1>

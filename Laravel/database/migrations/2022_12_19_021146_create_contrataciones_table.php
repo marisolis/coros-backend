@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_paquete');
             $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('id_proveedor');
             $table->string('Tipo_evento');
             $table->string('Forma_de_pago');
             $table->date('Fecha');
@@ -28,6 +29,7 @@ return new class extends Migration
 
             $table->foreign('id_paquete')->references('id')->on('paquetes');
             $table->foreign('id_cliente')->references('id')->on('users');
+            $table->foreign('id_proveedor')->references('id')->on('empresas');
         });
     }
 

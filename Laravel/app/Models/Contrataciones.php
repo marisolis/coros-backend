@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contrataciones extends Model
 {
     protected $table = 'contrataciones';
-    protected $fillable = ['id_paquete','id_cliente','Tipo_evento', 'Forma_de_pago', 'Fecha', 'Hora', 'Lugar','fecha_contrato'];
+    protected $fillable = ['id_paquete','id_cliente','id_proveedor','Tipo_evento', 'Forma_de_pago', 'Fecha', 'Hora', 'Lugar','fecha_contrato'];
 
     public $timestamps = false;
     use HasFactory;
