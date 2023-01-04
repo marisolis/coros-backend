@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
             $table->integer('empresa_id');
-            $table->integer('mes_id');
-            $table->integer('dia_id');
-            $table->integer('hora_id');
-            $table->boolean('disponibilidad');
+            $table->string('mes_id');
+            $table->string('dia_id');
+            $table->string('year_id')->default('2023');
+            // $table->string('hora_id');
+            $table->boolean('disponibilidad')->default(1);
             $table->timestamps();
         });
     }

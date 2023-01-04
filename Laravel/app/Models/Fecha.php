@@ -14,14 +14,14 @@ class Fecha extends Model
     }
 
     public function meses(){
-        return $this->belongsTo(Mes::class);
+        return $this->belongsTo(Mes::class,'mes_id','num_mes');
     }
 
     public function dias(){
-        return $this->belongsTo(Dia::class);
+        return $this->belongsTo(Dia::class,'dia_id','name');
     }
 
-    public function horas(){
-        return $this->belongsTo(Hora::class);
-    }
+    // public function horas(){
+    //     return $this->belongsTo(Hora::class,'hora_id','name');
+    // }
 }
