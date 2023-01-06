@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import AuthUser from './AuthUser';
 
-export default function Register() {
+export default function NuevoPaquete() {
     const navigate = useNavigate();
     const {http,setToken} = AuthUser();
     const [name,setName] = useState(null);
@@ -36,7 +36,6 @@ export default function Register() {
         }).catch((error) => {
             console.log(error.response);
             if (error.response.status === 500){
-                document.getElementById('loader-line').style.display = 'none';
                 setModalInfo('Uno de estos datos ya ha sido registrado. (Error 500)');
                 handleShow();
             }

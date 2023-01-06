@@ -7,13 +7,13 @@ import AuthUser from "./AuthUser";
 export default function RegisterVendor() {
   const navigate = useNavigate();
   const { http, setToken } = AuthUser();
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [phone, setPhone] = useState();
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [phone, setPhone] = useState(null);
   const [type, setType] = useState("vendor");
-  const [informacion, setInformacion] = useState();
-  const [nameVendor, setNameVendor] = useState();
+  const [informacion, setInformacion] = useState(null);
+  const [nameVendor, setNameVendor] = useState(null);
   const [imagen, setImagen] = useState(null);
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -29,7 +29,7 @@ export default function RegisterVendor() {
       nameVendor != null &&
       informacion != null
     ) {
-      document.getElementById("loader-line").style.visibility = "visible";
+      document.getElementById("loader-line").style.display = "flex";
       peticionFormUser();
     } else {
       handleShow();
@@ -53,8 +53,8 @@ export default function RegisterVendor() {
       });
   };
 
-  const peticionFormVendor = () => {
-    http
+  const peticionFormVendor = async () => {
+    await http
       .post("http://127.0.0.1:8000/api/v1/empresas/", {
         name: nameVendor,
         num_Telefono: phone,
@@ -101,11 +101,7 @@ export default function RegisterVendor() {
         </Modal.Footer>
       </Modal>
       <div className="col-sm-4 login-container">
-        <div
-          id="loader-line"
-          className="loader-line"
-          style={{ visibility: "hidden" }}
-        ></div>
+        <div id='loader-line' className="loader-line" style={{display: 'none'}}></div>
         <form onSubmit={submitForm} className="card login p-4 mb-5 shadow">
           <h1 className="text-center mb-1">Registrarse</h1>
           <h3 className="text-center mb-3" style={{ color: "gray" }}>

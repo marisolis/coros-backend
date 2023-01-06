@@ -55,7 +55,7 @@ function VerMasProveedor() {
                   <div style={{ margin: "0" }}>
                     <h1>{proveedor.name}</h1>
                     <h5 style={{ color: "gray" }}>{proveedor.email}</h5>
-                    <h6 style={{ color: "gray" }}>Num. {proveedor.id}</h6>
+                    <h6 style={{ color: "gray" }}>No. {proveedor.id}</h6>
                     <div
                       className="vendor-desc-container"
                       style={{

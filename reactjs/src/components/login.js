@@ -11,7 +11,7 @@ export default function Login() {
   const submitForm = (e) => {
     // api call
     e.preventDefault();
-    document.getElementById('loader-line').style.visibility = 'visible';
+    document.getElementById('loader-line').style.display = 'flex';
     
     http.post("/login", { email: email, password: password }).then((res) => {
       setToken(res.data.user, res.data.access_token);
@@ -52,7 +52,7 @@ export default function Login() {
         </Modal.Footer>
       </Modal>
       <div className="col-sm-4 login-container ps-0 pe-0">
-      <div id='loader-line' className="loader-line" style={{visibility: 'hidden'}}></div>
+      <div id='loader-line' className="loader-line" style={{display: 'none'}}></div>
         <form onSubmit={submitForm} className="card login p-4 shadow">
           <h1 className="text-center mb-3">Iniciar sesión</h1>
           <div className="form-group">

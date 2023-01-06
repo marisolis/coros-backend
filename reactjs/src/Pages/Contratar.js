@@ -78,12 +78,12 @@ function MyVerticallyCenteredModal(props) {
         console.log(emailV);
         document.getElementById('contratButton').disabled = true;
         document.getElementById('loadAnim').style.display = 'inline-flex';
-        document.getElementById('loader-line').style.visibility = 'visible';
+        document.getElementById('loader-line').style.display = 'flex';
         enviarContrato();
         await sleep(4000);
-        if (userType == 'client'){
+        if (userType === 'client'){
           navigate('/dashboard');
-        }else if (userType == 'vendor'){
+        }else if (userType === 'vendor'){
           navigate('/vendordashboard');
         }else{
           navigate('login');
@@ -119,7 +119,7 @@ function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <div id='loader-line' className="loader-line" style={{visibility: 'hidden'}}></div>
+      <div id='loader-line' className="loader-line" style={{display: 'none'}}></div>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Contratar
