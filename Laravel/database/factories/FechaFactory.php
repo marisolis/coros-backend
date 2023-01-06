@@ -23,8 +23,9 @@ class FechaFactory extends Factory
             'empresa_id'=> Empresa::factory(),
             'mes_id'=> Mes::factory(),
             'dia_id'=> Dia::factory(),
-            'hora_id'=> Hora::factory(),
-            'disponibilidad' =>$this->faker->boolean(),
+            // 'hora_id'=> Hora::factory(),
+            // 'disponibilidad' =>$this->faker->boolean(),
+            'disponibilidad_dia'=> $this->faker->boolean(),
         ];
     }
 }

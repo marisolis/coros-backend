@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Hora;
-use App\Http\Requests\StoreHoraRequest;
-use App\Http\Requests\UpdateHoraRequest;
 use App\Http\Controllers\Controller;
 
 class HoraController extends Controller
@@ -16,7 +14,7 @@ class HoraController extends Controller
      */
     public function index()
     {
-        //
+        return Hora::all();
     }
 
     /**
@@ -35,10 +33,7 @@ class HoraController extends Controller
      * @param  \App\Http\Requests\StoreHoraRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHoraRequest $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -48,7 +43,7 @@ class HoraController extends Controller
      */
     public function show(Hora $hora)
     {
-        //
+        
     }
 
     /**
@@ -69,10 +64,7 @@ class HoraController extends Controller
      * @param  \App\Models\Hora  $hora
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHoraRequest $request, Hora $hora)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

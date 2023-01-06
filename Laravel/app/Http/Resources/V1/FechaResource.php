@@ -16,11 +16,12 @@ class FechaResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'proveedorId'=>$this->proveedor_id,
+            'empresaId'=>$this->empresa_id,
             'mesId'=>$this->mes_id,
             'diaId'=>$this->dia_id,
-            'horaId'=>$this->hora_id,
-            'disponibilidad'=>$this->disponibilidad
+            'yearId'=>$this->year_id,
+            // 'horaId'=>$this->hora_id,
+            'disponibilidad'=>$this->disponibilidad_dia,
         ];
     }
 }

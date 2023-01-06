@@ -53,15 +53,18 @@ export default function RegisterVendor() {
       });
   };
 
+  const formData = new FormData();
+  formData.append("name", nameVendor);
+  formData.append("num_Telefono", phone);
+  formData.append("informacion", informacion);
+  formData.append("email", email);
+  formData.append("imagen", imagen);
+
   const peticionFormVendor = async () => {
-    await http
-      .post("http://127.0.0.1:8000/api/v1/empresas/", {
-        name: nameVendor,
-        num_Telefono: phone,
-        informacion: informacion,
-        email: email,
-        imagen: imagen,
-      })
+    const response = await fetch("http://127.0.0.1:8000/api/v1/empresas/", {
+      method: "POST",
+      body: formData,
+    })
       .then((res) => {
         sleep(4000);
         navigate("/login");
@@ -153,7 +156,7 @@ export default function RegisterVendor() {
               accept="image/png, image/jpeg"
               type="file"
               id="img"
-              onChange={(e) => setImagen(e.target.value)}
+              onChange={(e) => setImagen(e.target.files[0])}
             />
           </div>
 

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Mes;
-use App\Http\Requests\StoreMesRequest;
-use App\Http\Requests\UpdateMesRequest;
 use App\Http\Controllers\Controller;
 
 class MesController extends Controller
@@ -16,7 +14,7 @@ class MesController extends Controller
      */
     public function index()
     {
-        //
+        return Mes::all();
     }
 
     /**
@@ -35,10 +33,7 @@ class MesController extends Controller
      * @param  \App\Http\Requests\StoreMesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMesRequest $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -69,10 +64,7 @@ class MesController extends Controller
      * @param  \App\Models\Mes  $mes
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMesRequest $request, Mes $mes)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

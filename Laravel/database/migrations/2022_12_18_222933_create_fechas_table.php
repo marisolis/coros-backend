@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('empresa_id');
-            $table->unsignedBigInteger('mes_id');
-            $table->unsignedBigInteger('dia_id');
-            $table->unsignedBigInteger('hora_id');
-            $table->boolean('disponibilidad');
+            $table->integer('empresa_id');
+            $table->string('mes_id');
+            $table->string('dia_id');
+            $table->string('year_id')->default('2023');
+            // $table->string('hora_id');
+            $table->boolean('disponibilidad')->default(1);
             $table->timestamps();
 
             $table->foreign('empresa_id')->references('id')->on('empresas');

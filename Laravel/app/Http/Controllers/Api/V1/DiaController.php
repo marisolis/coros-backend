@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Dia;
-use App\Http\Requests\StoreDiaRequest;
-use App\Http\Requests\UpdateDiaRequest;
 use App\Http\Controllers\Controller;
 
 class DiaController extends Controller
@@ -16,7 +14,7 @@ class DiaController extends Controller
      */
     public function index()
     {
-        //
+        return Dia::all();
     }
 
     /**
@@ -35,10 +33,7 @@ class DiaController extends Controller
      * @param  \App\Http\Requests\StoreDiaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDiaRequest $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -69,11 +64,7 @@ class DiaController extends Controller
      * @param  \App\Models\Dia  $dia
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDiaRequest $request, Dia $dia)
-    {
-        //
-    }
-
+ 
     /**
      * Remove the specified resource from storage.
      *
