@@ -32,6 +32,7 @@ export default function RegisterVendor() {
       document.getElementById("loader-line").style.display = "flex";
       peticionFormUser();
     } else {
+      setModalInfo('Rellene los campos correctamente por favor.');
       handleShow();
     }
   };
@@ -50,6 +51,11 @@ export default function RegisterVendor() {
       })
       .catch((error) => {
         console.log(error.response);
+        if (error.response.status === 500){
+          document.getElementById('loader-line').style.display = 'none';
+          setModalInfo('Uno de estos datos ya ha sido registrado. (Error 500)');
+          handleShow();
+      }
       });
   };
 
@@ -75,6 +81,7 @@ export default function RegisterVendor() {
   };
 
   const [show, setShow] = useState(false);
+  const [modalInfo, setModalInfo] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -95,7 +102,7 @@ export default function RegisterVendor() {
           <Modal.Title>Notificación</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Rellene todos los campos correctamente por favor.
+        {modalInfo}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

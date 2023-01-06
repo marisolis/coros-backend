@@ -18,7 +18,8 @@ export default function Login() {
     }).catch((error) => {
         console.log(error.response);
         if (error.response.status === 401){
-            handleShow();
+          document.getElementById('loader-line').style.display = 'none';
+          handleShow();
         }
       })
   };
@@ -44,7 +45,7 @@ export default function Login() {
         <Modal.Header closeButton>
         <Modal.Title>Notificación</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Datos incorrectos</Modal.Body>
+        <Modal.Body>Datos incorrectos.</Modal.Body>
         <Modal.Footer>
         <Button variant="primary" onClick={handleClose}>
             Aceptar
