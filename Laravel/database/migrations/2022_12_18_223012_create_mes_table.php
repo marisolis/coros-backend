@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('mes', function (Blueprint $table) {
             $table->id();
+            $table->string('num_mes')->default('01');
             $table->string('name');
             $table->timestamps();
         });

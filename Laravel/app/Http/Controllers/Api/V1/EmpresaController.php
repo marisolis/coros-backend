@@ -25,7 +25,8 @@ class EmpresaController extends Controller
 
        $includePaquetes = $request->query('includePaquetes');
        $includeFechas = $request->query('includeFechas');
-
+       $includeContrato = $request->query('includeContratos');
+       
        $empresas = Empresa::where($filterItems);
 
        if($includeFechas){
@@ -34,6 +35,10 @@ class EmpresaController extends Controller
 
        if($includePaquetes){
         $empresas = $empresas->with('paquetes');
+       }
+
+       if($includeContrato){
+        $empresas = $empresas->with('contrataciones');
        }
 
        return new EmpresaCollection($empresas->paginate()->appends($request->query()));
@@ -58,7 +63,7 @@ class EmpresaController extends Controller
             $destinationPath = 'images/';
             $filename = time() . '-' . $file->getClientOriginalName();
             $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
-            $newEmpresa->imagen = $destinationPath . $filename;
+            $newEmpresa->imagen = "http://127.0.0.1:8000/" . $destinationPath . $filename;
         }
 
         $newEmpresa->name = $request->name;
@@ -81,12 +86,16 @@ class EmpresaController extends Controller
     {
         $includeFechas = request()->query('includeFechas');
         $includePaquetes = request()->query('includePaquetes');
+        $includeContrato = request()->query('includeContratos');
 
         if ($includePaquetes) {
             return new EmpresaResource($empresa->loadMissing('paquetes'));
         }
         if ($includeFechas) {
             return new EmpresaResource($empresa->loadMissing('fechas'));
+        }
+        if ($includeContrato) {
+            return new EmpresaResource($empresa->loadMissing('contrataciones'));
         }
 
         return new EmpresaResource($empresa);

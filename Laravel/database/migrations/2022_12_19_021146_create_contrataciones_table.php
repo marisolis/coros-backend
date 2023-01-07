@@ -17,8 +17,9 @@ return new class extends Migration
         Schema::create('contrataciones',function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_paquete');
-            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('paquete_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('empresa_id');
             $table->string('Tipo_evento');
             $table->string('Forma_de_pago');
             $table->date('Fecha');
@@ -26,8 +27,9 @@ return new class extends Migration
             $table->string('Lugar');
             $table->timestamp('fecha_contrato');
 
-            $table->foreign('id_paquete')->references('id')->on('paquetes');
-            $table->foreign('id_cliente')->references('id')->on('users');
+            $table->foreign('paquete_id')->references('id')->on('paquetes');
+            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
         });
     }
 

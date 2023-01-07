@@ -1,11 +1,11 @@
 import React from "react";
 import cardImg from "../assets/img/cardImg.jpg";
-import './styles.css'
+import "./styles.css";
 
 export const Card = ({ paquete }) => {
   return (
-    <div className="card shadow" style={{ width: "22rem" }}>
-      <img className="card-img-top" src={cardImg} alt="Card cap"></img>
+    <div className="card shadow" style={{ width: "22em" }}>
+      <img className="card-img-top" src={paquete.imagen} alt="Card cap"></img>
       <div className="card-body">
         <h5 className="card-title">{paquete.name}</h5>
         <p className="card-text">{paquete.descripcion}</p>

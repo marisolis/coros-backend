@@ -52,7 +52,7 @@ class PaqueteController extends Controller
             $destinationPath = 'images/';
             $filename = time() . '-' . $file->getClientOriginalName();
             $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
-            $newPaquete->imagen = $destinationPath . $filename;
+            $newPaquete->imagen ="http://127.0.0.1:8000/" .  $destinationPath . $filename;
         }
 
         if($request->hasFile('video')){
@@ -60,7 +60,7 @@ class PaqueteController extends Controller
             $destinationPath = 'videos/';
             $filename = time() . '-' . $file->getClientOriginalName();
             $uploadSuccess = $request->file('video')->move($destinationPath, $filename);
-            $newPaquete->imagen = $destinationPath . $filename;
+            $newPaquete->video ="http://127.0.0.1:8000/" .  $destinationPath . $filename;
         }
 
         if($request->hasFile('audio')){
@@ -68,7 +68,7 @@ class PaqueteController extends Controller
             $destinationPath = 'audios/';
             $filename = time() . '-' . $file->getClientOriginalName();
             $uploadSuccess = $request->file('audio')->move($destinationPath, $filename);
-            $newPaquete->imagen = $destinationPath . $filename;
+            $newPaquete->audio = "http://127.0.0.1:8000/" .$destinationPath . $filename;
         }
 
         $newPaquete->empresa_id = $request->empresa_id;

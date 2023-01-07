@@ -2,30 +2,33 @@
 <html lang="en">
 <body>
 <div class="container mt-3">
-  <h2>Nuevo Contrato Recibido</h2>
-  <p>La siguiente informacion pertenece a un cliente, favor de no compartirla.</p>
+  <h2 style="color: black;">Nuevo Contrato Recibido</h2>
+  <p style="color: black;">La siguiente informacion pertenece a un cliente, favor de no compartirla.</p>
   <form action="/action_page.php">
     <div class="mb-3 mt-3">
-      <label for="comment">Nombre del Usuario</label>
-      <label for="comment">   {{ $nombre_cliente }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Nombre del usuario:</label>
+      <label for="comment" style="color: black;">   {{ $nombre_cliente }}</label>
       <br>
-      <label for="comment">Correo del Usuario</label>
-      <label for="comment">   {{ $correo_cliente }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Correo del usuario:</label>
+      <label for="comment" style="color: black;">   {{ $correo_cliente }}</label>
       <br>
-      <label for="comment">Paquete Requerido</label>
-      <label for="comment">    {{ $nombre_paquete }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Numero de teléfono:</label>
+      <label for="comment" style="color: black;">   {{ $numero_telefono }}</label>
       <br>
-      <label for="comment">Tipo de evento</label>
-      <label for="comment">    {{ $Tipo_evento }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Paquete requerido:</label>
+      <label for="comment" style="color: black;">    {{ $nombre_paquete }}</label>
       <br>
-      <label for="comment">Ubicacion del evento</label>
-      <label for="comment">    {{ $Lugar }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Tipo de evento:</label>
+      <label for="comment" style="color: black;">    {{ $Tipo_evento }}</label>
       <br>
-      <label for="comment">Fecha</label>
-      <label for="comment">    {{ $Fecha }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Ubicacion del evento:</label>
+      <label for="comment" style="color: black;">    {{ $Lugar }}</label>
       <br>
-      <label for="comment">Hora</label>
-      <label for="comment">    {{ $Hora }}</label>
+      <label for="comment" style="font-weight: 700;color: black;">Fecha:</label>
+      <label for="comment" style="color: black;">    {{ $Fecha }}</label>
+      <br>
+      <label for="comment" style="font-weight: 700;color: black;">Hora:</label>
+      <label for="comment" style="color: black;">    {{ $Hora }}</label>
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Ir al contrato</button>

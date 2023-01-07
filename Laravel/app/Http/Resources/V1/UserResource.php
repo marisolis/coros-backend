@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Resources\V1;
-
 use Illuminate\Http\Resources\Json\JsonResource;
-
-class FechaResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +11,13 @@ class FechaResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return[
             'id'=>$this->id,
-            'empresaId'=>$this->empresa_id,
-            'mesId'=>$this->mes_id,
-            'diaId'=>$this->dia_id,
-            'yearId'=>$this->year_id,
-            // 'horaId'=>$this->hora_id,
-            'disponibilidad'=>$this->disponibilidad_dia,
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'phone'=>$this->phone,
+            'type'=>$this->type,
+            'contrataciones' => ContratoResource::collection($this->whenLoaded('contrataciones')),
         ];
     }
 }
-

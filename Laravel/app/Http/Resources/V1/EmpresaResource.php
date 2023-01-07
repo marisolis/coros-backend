@@ -16,9 +16,11 @@ class EmpresaResource extends JsonResource
             'name'=>$this->name,
             'numTelefono'=>$this->num_Telefono,
             'informacion'=>$this->informacion,
+            'email'=>$this->email,
             'imagen'=>$this->imagen,
             'fechas' => FechaResource::collection($this->whenLoaded('fechas')),
             'paquetes' => PaqueteResource::collection($this->whenLoaded('paquetes')),
+            'contrataciones' => ContratoResource::collection($this->whenLoaded('contrataciones')),
         ];
     }
 }

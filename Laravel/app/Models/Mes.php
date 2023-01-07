@@ -10,6 +10,6 @@ class Mes extends Model
     use HasFactory;
 
     public function fechas(){
-        return $this->hasMany(Fecha::class);
+        return $this->hasMany(Fecha::class,'num_mes','mes_id');
     }
 }
