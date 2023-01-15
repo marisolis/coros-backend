@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Fecha;
 use App\Http\Controllers\Controller;
+use App\Models\Paquete;
 use App\Http\Resources\V1\FechaResource;
 use Illuminate\Http\Request;
 use App\Filters\V1\FechaFilter;
@@ -16,7 +17,7 @@ class FechaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($fecha)
+    public function index()
     {
         // $filter = new FechaFilter();
         // $queryItems = $filter->transform($request); //[['column', 'operator', 'value']]
@@ -28,24 +29,13 @@ class FechaController extends Controller
         //     $fechas = Fecha::where($queryItems)->all();
         //     return $fechas->appends($request->query());
         //     //return new PaqueteCollection($paquetes->appends($request->query()));
-        return Fecha::all();
+        $fechas = Fecha::all();
+       
+
+        return $fechas;
         
     }
 
-    public function filterFecha($fecha){
-        
-        $date = explode("-", $fecha);
-        $day = $date[0];
-        $month = $date[1];
-        $year = $date[2];
-        Log::info($day);
-        $fechas = Fecha::where('mes_id','=',$month)->where('dia_id','=',$day)->where('year_id','=',$year)->where('disponibilidad_dia','=',1)->get();
-        $id_proveedores = array();
-        foreach($fechas as $fecha){
-            array_push($id_proveedores,$fecha->empresa_id);
-        }
-        return $id_proveedores;
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -71,9 +61,19 @@ class FechaController extends Controller
      * @param  \App\Models\Fecha  $fecha
      * @return \Illuminate\Http\Response
      */
-    public function show(Fecha $fecha)
+    public function show($fecha)
     {
-        return new FechaResource($fecha);
+        $id_proveedores = [];
+        $fechitas = Fecha::where('fecha',$fecha)->where('disponibilidad',1)->get();
+        foreach($fechitas as $fechita){
+            array_push($id_proveedores,$fechita->empresa_id);
+        }
+        $paquetes = [];
+        foreach($id_proveedores as $id){
+            $paquete = Paquete::where('empresa_id',$id)->get();
+            array_push($paquetes,$paquete);
+        }
+        return $paquetes;
     }
 
     /**

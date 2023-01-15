@@ -29,13 +29,13 @@ Route::group(['middleware'=>'api'],function(){
     Route::post('me', [AuthController::class,'me']);
 });
 
-Route::get('fecha/{fecha}',[FechaController::class,'filterFecha']);
+Route::get('disponibilidad',[FechaController::class,'filterFecha']);
 
 Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], function(){
     Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('paquetes',PaqueteController::class);
     Route::apiResource('fechas',FechaController::class);
-    Route::apiResource('usuario',usuarioController::class);
+    Route::apiResource('usuario',usuarioController::class);    
     Route::apiResource('contratacion', contratacionesController::class);
     Route::post('paquetes/bulk',['uses'=>'PaqueteController@bulkStore']);
 });

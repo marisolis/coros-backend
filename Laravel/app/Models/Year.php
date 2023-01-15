@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dia extends Model
+class Year extends Model
 {
     use HasFactory;
 
-    // public function fechas(){
+    // public function year(){
     //     return $this->hasMany(Fecha::class);
     // }
 

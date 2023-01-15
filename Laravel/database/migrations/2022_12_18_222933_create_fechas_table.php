@@ -16,18 +16,19 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
-            $table->integer('empresa_id');
-            $table->string('mes_id');
-            $table->string('dia_id');
-            $table->string('year_id')->default('2023');
-            // $table->string('hora_id');
+            $table->unsignedBigInteger('empresa_id');
+            // $table->unsignedBigInteger('mes_id');
+            // $table->unsignedBigInteger('dia_id');
+            // $table->unsignedBigInteger('year_id')->default('2023');
+            // $table->unsignedBigInteger('hora_id');
+            $table->string('fecha');
+            $table->string('hora');
             $table->boolean('disponibilidad')->default(1);
-            $table->timestamps();
 
             $table->foreign('empresa_id')->references('id')->on('empresas');
-            $table->foreign('mes_id')->references('id')->on('mes');
-            $table->foreign('dia_id')->references('id')->on('dias');
-            $table->foreign('hora_id')->references('id')->on('horas');
+            // $table->foreign('mes_id')->references('id')->on('mes');
+            // $table->foreign('dia_id')->references('id')->on('dias');
+            // $table->foreign('hora_id')->references('id')->on('horas');
         });
     }
 
