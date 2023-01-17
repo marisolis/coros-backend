@@ -20,9 +20,8 @@ class FechaResource extends JsonResource
             'mesId'=>$this->mes_id,
             'diaId'=>$this->dia_id,
             'yearId'=>$this->year_id,
-            // 'horaId'=>$this->hora_id,
-            'disponibilidad'=>$this->disponibilidad_dia,
+            'horaId'=>$this->hora_id,
+            'disponibilidad'=>$this->disponibilidad,
         ];
     }
 }
-

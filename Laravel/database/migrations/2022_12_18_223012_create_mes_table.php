@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('num_mes')->default('01');
             $table->string('name');
-            $table->timestamps();
         });
     }
 

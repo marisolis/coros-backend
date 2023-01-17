@@ -11,6 +11,7 @@ class FechaFilter extends ApiFilter {
     'mes_id' => ['eq'],
     'dia_id'=>['eq'],
     'hora_id' => ['eq'],
+    'year_id' => ['eq'],
     'disponibilidad'=>['eq']
   ];
 
@@ -18,7 +19,8 @@ class FechaFilter extends ApiFilter {
     'proveedorId'=>'proveedor_id',
     'mesId' => 'mes_id',
     'diaId'=> 'dia_id',
-    'horaId' => 'hora_id'
+    'horaId' => 'hora_id',
+    'year_id' => 'year_id',
   ];
 
 protected $operatorMap = [

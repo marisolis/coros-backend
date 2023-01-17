@@ -288,6 +288,10 @@
   .contrats-container h2{
     font-size: 36px;
   }
+
+  .login-container{
+    width: 70% !important;
+  }
     
   }
 
