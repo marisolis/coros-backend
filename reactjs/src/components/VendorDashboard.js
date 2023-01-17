@@ -194,24 +194,26 @@ export default function VendorDashboard() {
                             <table style={{width: '100%'}}>
                                 <thead>
                                     <tr style={{backgroundColor: 'lightgray'}}>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Nombre paquete</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Nombre cliente</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Evento</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Forma de pago</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Fecha</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Hora</th>
-                                        <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Lugar</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Nombre paquete</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Nombre cliente</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Tel. Cliente</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Evento</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Forma de pago</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Fecha</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Hora</th>
+                                        <th className='title-contrat-list p-1' style={{border: '1px solid lightgray', fontSize: '14px'}}>Lugar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>Paquete 1 Guitarras</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>Emilio Jarey Mendez Torres</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>Misa</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>Tarjeta Débito</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>2023-08-01</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>19:00:00</th>
-                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>Tuxtla Gtz. Col. Potinaspak calle Gladiola #185</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>Paquete 1 Guitarras</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>Emilio Jarey Mendez Torres</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>9611302266</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>Misa</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>Tarjeta Débito</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>2023-08-01</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>19:00:00</th>
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid lightgray', fontWeight: '500', fontSize: '14px'}}>Tuxtla Gtz. Col. Potinaspak calle Gladiola #185</th>
                                         <button className='btn btn-danger ms-2 me-2 mt-1 mb-1 p-1' style={{fontSize: '10px', borderRadius: '4px'}}>Cancelar</button>
                                     </tr>
                                 </tbody>

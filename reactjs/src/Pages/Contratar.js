@@ -153,9 +153,17 @@ function MyVerticallyCenteredModal(props) {
 
                     <div className="form-group mt-3">
                         <label className="form-label">Evento a realizar*</label>
-                        <input type="text" className="form-control" placeholder="ej. Misa, Bautizo, (Evento en especifico)"
-                            onChange={e=>setEvento(e.target.value)}
-                        id="event" maxLength='25' required/>
+                        <select className='form-select' onChange={e=>setEvento(e.target.value)} defaultValue='1'>
+                          <option>Seleccione una opción...</option>
+                          <option>Rezo</option>
+                          <option>XV Años</option>
+                          <option>Boda</option>
+                          <option>Comunión</option>
+                          <option>Bautizo</option>
+                          <option>Acción de gracias</option>
+                          <option>Difunto</option>
+                          <option>Aniversario</option>
+                        </select>
                     </div>
 
                     <div className="form-group mt-3">
@@ -179,15 +187,13 @@ function MyVerticallyCenteredModal(props) {
                         id="event" required/>
                     </div>
 
-                    <div className="form-group mt-3">
+                    <div className="form-group mt-3 mb-2">
                         <label className="form-label">Forma de pago*</label>
                         <select className='form-select' onChange={e=>setFormaPago(e.target.value)} defaultValue='1'>
                           <option>Seleccione una opción...</option>
-                          <option>Tarjeta Débito</option>
-                          <option>Tarjeta Crédito</option>
+                          <option>Transferencia</option>
+                          <option>Depósito</option>
                           <option>Efectivo</option>
-                          <option>Paypal</option>
-                          <option>Transferencia Bancaria</option>
                         </select>
                     </div>
 
