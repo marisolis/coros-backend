@@ -17,8 +17,8 @@ export default function Login() {
       setToken(res.data.user, res.data.access_token);
     }).catch((error) => {
         console.log(error.response);
+        document.getElementById('loader-line').style.display = 'none';
         if (error.response.status === 401){
-          document.getElementById('loader-line').style.display = 'none';
           handleShow();
         }
       })

@@ -1,6 +1,4 @@
 import './styles.css';
-import cardImg from '../components/resources/cardImg.jpg';
-import paqImg from '../components/resources/TestBg2.jpg';
 export default function Vendor() {
 
     return(

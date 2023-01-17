@@ -26,6 +26,7 @@ function App() {
     if (token != null) {
       checkTokenExpiration();
     }
+    document.title = 'Ambar';
   }, []);
 
   const {getToken} = AuthUser();
@@ -33,7 +34,7 @@ function App() {
     return <Guest />
   }
 
-  if (user_detail.type == 'vendor'){
+  if (user_detail.type === 'vendor'){
     return <AuthVendor />
    }
 

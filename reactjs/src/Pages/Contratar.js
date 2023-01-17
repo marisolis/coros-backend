@@ -34,6 +34,7 @@ function MyVerticallyCenteredModal(props) {
   );
 
   useEffect( () => {
+    console.log(localStorage.getItem("vendorName"));
     var tokenUser = sessionStorage.getItem('token');
     if (tokenUser != null) {
       http.post('/me').then((res)=>{
@@ -59,6 +60,7 @@ function MyVerticallyCenteredModal(props) {
       console.log(res);
     }).catch((error) => {
         console.log(error.response.data);
+        document.getElementById('loader-line').style.display = 'none';
     })
   }
 
@@ -103,16 +105,16 @@ function MyVerticallyCenteredModal(props) {
   return (
     <div>
       <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>Notificación</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{modalInfo}</Modal.Body>
-                <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
-                    Aceptar
-                </Button>
-                </Modal.Footer>
-            </Modal>
+          <Modal.Header closeButton>
+          <Modal.Title>Notificación</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{modalInfo}</Modal.Body>
+          <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+              Aceptar
+          </Button>
+          </Modal.Footer>
+      </Modal>
 
             <Modal id="contratModal"
       {...props}
@@ -153,14 +155,14 @@ function MyVerticallyCenteredModal(props) {
                         <label className="form-label">Evento a realizar*</label>
                         <input type="text" className="form-control" placeholder="ej. Misa, Bautizo, (Evento en especifico)"
                             onChange={e=>setEvento(e.target.value)}
-                        id="event" required/>
+                        id="event" maxLength='25' required/>
                     </div>
 
                     <div className="form-group mt-3">
                         <label className="form-label">Lugar*</label>
                         <input type="text" className="form-control" placeholder="ej. Tuxtla Gtz. Col. La Salle, Calle Quintana Roo, num. 397"
                             onChange={e=>setLugar(e.target.value)}
-                        id="event" required/>
+                        id="event" maxLength='60' required/>
                     </div>
 
                     <div className="form-group mt-3">

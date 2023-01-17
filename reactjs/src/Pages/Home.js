@@ -15,6 +15,7 @@ function Home() {
     if (localStorage.getItem('vendorEmail')){
       localStorage.removeItem('vendorEmail');
       localStorage.removeItem('vendorID');
+      localStorage.removeItem("vendorName");
     }
   
     if (localStorage.getItem('idPaquete')){

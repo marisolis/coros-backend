@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { proveedorUnico } from "../Helpers/Proveedor";
 import { proveedorUnicoPaquetes } from "../Helpers/Proveedor";
 import "../assets/style/vermas.css";
-import paqImg from "../components/resources/TestBg2.jpg";
 import { Card } from "../components/Card2";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +21,7 @@ function VerMasProveedor() {
     if (localStorage.getItem("vendorEmail")) {
       localStorage.removeItem("vendorEmail");
       localStorage.removeItem("vendorID");
+      localStorage.removeItem("vendorName");
     }
 
     if (localStorage.getItem("idPaquete")) {
@@ -29,6 +29,7 @@ function VerMasProveedor() {
       localStorage.removeItem("namePaquete");
     }
   }, []);
+
 
   return (
     <div className="container-fluid mw-100 m-0 p-0">
@@ -54,7 +55,8 @@ function VerMasProveedor() {
                 >
                   <div style={{ margin: "0" }}>
                     <h1>{proveedor.name}</h1>
-                    <h5 style={{ color: "gray" }}>{proveedor.email}</h5>
+                    {/* <h5 style={{ color: "gray" }}>{proveedor.email}</h5>
+                    <h6 style={{ color: "gray" }}>Tel. +52 {proveedor.numTelefono}</h6> */}
                     <h6 style={{ color: "gray" }}>No. {proveedor.id}</h6>
                     <div
                       className="vendor-desc-container"

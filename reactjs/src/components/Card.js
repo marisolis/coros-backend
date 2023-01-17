@@ -1,5 +1,4 @@
 import React from "react";
-import cardImg from "../assets/img/cardImg.jpg";
 import "./styles.css";
 
 export const Card = ({ proveedor }) => {

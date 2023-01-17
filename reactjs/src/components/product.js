@@ -1,5 +1,4 @@
 import './styles.css';
-import paqImg from '../components/resources/TestBg2.jpg';
 export default function Product() {
     
     return(

@@ -51,8 +51,8 @@ export default function RegisterVendor() {
       })
       .catch((error) => {
         console.log(error.response);
+        document.getElementById('loader-line').style.display = 'none';
         if (error.response.status === 500){
-          document.getElementById('loader-line').style.display = 'none';
           setModalInfo('Uno de estos datos ya ha sido registrado. (Error 500)');
           handleShow();
       }
@@ -110,7 +110,7 @@ export default function RegisterVendor() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <div className="col-sm-4 login-container">
+      <div className="col-sm-4 login-container ps-0 pe-0">
         <div id='loader-line' className="loader-line" style={{display: 'none'}}></div>
         <form onSubmit={submitForm} className="card login p-4 mb-5 shadow">
           <h1 className="text-center mb-1">Registrarse</h1>

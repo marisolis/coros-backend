@@ -35,8 +35,8 @@ export default function Register() {
             navigate('/login')
         }).catch((error) => {
             console.log(error.response);
+            document.getElementById('loader-line').style.display = 'none';
             if (error.response.status === 500){
-                document.getElementById('loader-line').style.display = 'none';
                 setModalInfo('Uno de estos datos ya ha sido registrado. (Error 500)');
                 handleShow();
             }

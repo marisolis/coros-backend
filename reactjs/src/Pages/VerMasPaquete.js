@@ -1,4 +1,3 @@
-import paqImg from "../components/resources/TestBg2.jpg";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { paqueteUnico } from "../Helpers/Paquete";
@@ -6,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Contratar from "./Contratar";
 import "../assets/style/vermas.css";
-import audio from "../assets/resources/audio-test.mp3";
 
 function VerMasPaquete() {
   let navigate = useNavigate();
@@ -26,6 +24,7 @@ function VerMasPaquete() {
           response.data.data.name;
         localStorage.setItem("vendorEmail", response.data.data.email);
         localStorage.setItem("vendorID", response.data.data.id);
+        localStorage.setItem("vendorName", response.data.data.name);
       })
       .catch((error) => {
         console.log(error.response);

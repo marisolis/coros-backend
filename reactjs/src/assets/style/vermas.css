@@ -105,10 +105,6 @@ audio::-webkit-media-controls-panel{
     max-height: 610px;
    }
 
-  .perfil-container{
-    width: 40%;
-  }
-
    .paquete-info-p h1{
     font-size: 30px !important;
   }
@@ -276,18 +272,7 @@ audio::-webkit-media-controls-panel{
   }
 }
 
-@media screen and (max-width: 1095px) {
-  .imagen-paquete-container-p{
-    width: 650px;
-    max-height: 360px;
-   }
-
-   .vendor-desc-container{
-    max-height: 110px !important;
-  }
-}
-
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1100px) {
   .paquete-post-p{
     flex-direction: column !important;
   }

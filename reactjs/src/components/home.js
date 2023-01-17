@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import cardImg from "../components/resources/cardImg.jpg";
 import Product from "./product";
 import "./styles.css";
 
