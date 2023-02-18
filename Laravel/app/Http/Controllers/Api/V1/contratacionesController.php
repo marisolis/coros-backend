@@ -81,7 +81,12 @@ class contratacionesController extends Controller
     }
     public function show($id)
     {
-        $contratacion = Contrataciones::find($id);
+        $contratacion = Contrataciones::join('users','users.id','=','contrataciones.usuario_id')
+            ->join('empresas','empresas.id','=','contrataciones.empresa_id')
+            ->join('paquetes','paquetes.id','=','contrataciones.paquete_id')
+            ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
+            ->where('contrataciones.id',$id)->first();
+        
         return $contratacion;
     }
 }
