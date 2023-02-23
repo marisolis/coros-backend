@@ -3,6 +3,7 @@ import AuthUser from './AuthUser';
 import './styles.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import axios from "axios";
 
 export default function VendorDashboard() {
     
@@ -16,6 +17,8 @@ export default function VendorDashboard() {
     const [imagen, setImagen] = useState(null);
     const [audio, setAudio] = useState(null);
 
+    const [idProveedor, setIdProveedor] = useState(null);
+
     const sleep = ms => new Promise(
         resolve => setTimeout(resolve, ms)
     );
@@ -27,6 +30,7 @@ export default function VendorDashboard() {
     const fetchUserDetail = () =>{
         http.post('/me').then((res)=>{
             setUserdetail(res.data);
+            console.log(res.data);
         });
     }
 
@@ -42,8 +46,23 @@ export default function VendorDashboard() {
         }
     }
 
+    const emailProveedor=async()=>{
+        const response = await axios.get(
+            `http://127.0.0.1:8000/api/v1/findByEmail/${userdetail.email}`
+          );
+          setIdProveedor(response.data[0].id);
+    }
+
     const peticionForm = () => {
-        http.post('http://127.0.0.1:8000/api/v1/paquetes/',{name:name,price:price,descripcion:informacion,imagen:imagen,audio:audio}).then((res)=>{
+        emailProveedor();
+        const formData = new FormData();
+        formData.append("empresa_id", idProveedor);
+        formData.append("name", name);
+        formData.append("precio", price);
+        formData.append("descripcion", informacion);
+        formData.append("imagen", imagen);
+        formData.append("audio", audio);
+        http.post('http://127.0.0.1:8000/api/v1/paquetes/', formData).then((res)=>{
             sleep(3000);
             handleClose();
         }).catch((error) => {

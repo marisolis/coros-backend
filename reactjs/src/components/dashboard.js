@@ -18,6 +18,7 @@ export default function Dashboard() {
     const fetchUserDetail = () =>{
         http.post('/me').then((res)=>{
             setUserdetail(res.data);
+            console.log(userdetail)
             proveedorUnicoContratos(res.data.id, setCliente);
 
         });
@@ -28,15 +29,6 @@ export default function Dashboard() {
             fetchUserDetail();
           }
       }, []);
-
-    //   if(cliente !== null){
-
-    //     http.get(`http://127.0.0.1:8000/api/v1/paquetes/${cliente.paquete_id}}`).then((res) => {
-    //         console.log(res);
-    //     }).catch((error) => {
-    //         console.log(error.response);
-    //     });
-    //   }
 
     return(
         <div className='d-flex dashboard'>
