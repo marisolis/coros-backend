@@ -26,7 +26,7 @@ return new class extends Migration
             $table->time('Hora');
             $table->string('Lugar');
             $table->timestamp('fecha_contrato');
-
+            $table->string('status');
             $table->foreign('paquete_id')->references('id')->on('paquetes');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('empresa_id')->references('id')->on('empresas');

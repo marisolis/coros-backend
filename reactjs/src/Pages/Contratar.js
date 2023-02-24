@@ -56,7 +56,7 @@ function MyVerticallyCenteredModal(props) {
   }, []);
 
   function enviarContrato() {
-    http.post('http://127.0.0.1:8000/api/v1/contratacion',{paquete_id:IDPaquete,nombre_paquete:namePaquete,usuario_id:IDClient,nombre_cliente:nameC, Tipo_evento:evento,Forma_de_pago:formaPago,Fecha:fecha,Hora:hora,Lugar:lugar,correo:'203453@ids.upchiapas.edu.mx',correo_cliente:emailC,numero_telefono:phoneC,empresa_id:IDVendor}).then((res)=>{
+    http.post('http://127.0.0.1:8000/api/v1/contratacion',{paquete_id:IDPaquete,nombre_paquete:namePaquete,usuario_id:IDClient,nombre_cliente:nameC, Tipo_evento:evento,Forma_de_pago:formaPago,Fecha:fecha,Hora:hora,Lugar:lugar,correo:'203453@ids.upchiapas.edu.mx',correo_cliente:emailC,numero_telefono:phoneC,empresa_id:IDVendor, status:'Pendiente'}).then((res)=>{
       console.log(res);
     }).catch((error) => {
         console.log(error.response.data);

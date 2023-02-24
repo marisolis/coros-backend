@@ -23,6 +23,7 @@ class ContratoResource extends JsonResource
             'Hora'=>$this->Hora,
             'Lugar'=>$this->Lugar,
             'fecha_contrato'=>$this->fecha_contrato,
+            'status'=>$this->status
         ];
     }
 }

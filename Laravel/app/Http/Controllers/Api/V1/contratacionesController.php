@@ -24,7 +24,7 @@ class contratacionesController extends Controller
 
     public function store(Request $request){
         // $Contrato = $request(['paquete_id','nombre_paquete','usuario_id','nombre_cliente','Tipo_evento', 'Forma_de_pago', 'Fecha', 'Hora', 'Lugar','fecha_contrato','correo','correo_cliente','numero_telefono','empresa_id']);
-        
+
         $new_contrato = new Contrataciones();
         $new_contrato->paquete_id = $request->paquete_id;
         // $new_contrato->nombre_paquete = $request->nombre_paquete;
@@ -40,7 +40,7 @@ class contratacionesController extends Controller
         // $new_contrato->correo_cliente = $request->correo_cliente;
         // $new_contrato->numero_telefono = $request->numero_telefono;
         $new_contrato->empresa_id = $request->empresa_id;
-
+        $new_contrato->status = $request->status;
         $new_contrato->save();
 
         // Contrataciones::create($Contrato);
@@ -75,6 +75,7 @@ class contratacionesController extends Controller
         // $contratacion->correo_cliente = $request->correo_cliente;
         // $contratacion->numero_telefono = $request->numero_telefono;
         $contratacion->empresa_id = $request->empresa_id;
+        $contratacion->status = $request->status;
         $contratacion->save();
 
         return $contratacion;
@@ -86,7 +87,7 @@ class contratacionesController extends Controller
             ->join('paquetes','paquetes.id','=','contrataciones.paquete_id')
             ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
             ->where('contrataciones.id',$id)->first();
-        
+
         return $contratacion;
     }
 }

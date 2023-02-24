@@ -13,12 +13,13 @@ class Contrataciones extends Model
         'paquete_id',
         'usuario_id',
         'empresa_id',
-        'Tipo_evento', 
-        'Forma_de_pago', 
-        'Fecha', 
-        'Hora', 
+        'Tipo_evento',
+        'Forma_de_pago',
+        'Fecha',
+        'Hora',
         'Lugar',
-        'fecha_contrato'
+        'fecha_contrato',
+        'status'
     ];
 
     public $timestamps = false;
