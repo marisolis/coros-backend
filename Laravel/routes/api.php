@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\V1\contratacionesController;
+use App\Http\Controllers\Api\V1\ContratacionesEmpresaController;
+use App\Http\Controllers\Api\V1\ContratacionesUserController;
 use App\Http\Controllers\Api\V1\EmpresaUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,21 +30,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 
-Route::group(['middleware'=>'api'],function(){
+Route::group(['middleware'=>'api'], function () {
     Route::post('logout', [AuthController::class,'logout']);
     Route::post('refresh', [AuthController::class,'refresh']);
     Route::post('me', [AuthController::class,'me']);
 });
 
-Route::get('disponibilidad',[FechaController::class,'filterFecha']);
+Route::get('disponibilidad', [ FechaController::class,'filterFecha']);
 
-Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], function(){
+
+Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], function () {
+    Route::apiResource('contratacion/usuario', ContratacionesUserController::class,
+    );
+    Route::apiResource('contratacion/empresa', ContratacionesEmpresaController::class,
+);
     Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('findByEmail', EmpresaUserController::class);
-    Route::apiResource('paquetes',PaqueteController::class);
-    Route::apiResource('fechas',FechaController::class);
-    Route::apiResource('usuario',usuarioController::class);
-    Route::apiResource('contratacion', contratacionesController::class);
+    Route::apiResource('paquetes', PaqueteController::class);
+    Route::apiResource('fechas', FechaController::class);
+    Route::apiResource('usuario', usuarioController::class);
+    Route::apiResource('contratacion', contratacionesController::class)->except([
+        'showByCliente', 'showByEmpresa'
+    ]);;
     Route::get('empresas/find', [EmpresaCollection::class, 'findByEmail']);
     Route::post('paquetes/bulk',['uses'=>'PaqueteController@bulkStore']);
 });
