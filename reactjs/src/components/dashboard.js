@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { proveedorUnicoContratos } from '../Helpers/Cliente';
 import AuthUser from './AuthUser';
 import './styles.css';
+import axios from "axios";
 
 export default function Dashboard() {
 
@@ -10,6 +11,10 @@ export default function Dashboard() {
     const {token,logout} = AuthUser();
     const {http} = AuthUser();
     const [userdetail,setUserdetail] = useState('');
+
+    const [idContrato, setIdContrato] = useState(null);
+
+    const[statusContrato, SetStatusContrato] =  useState(null);
 
     const logoutUser = () => {
             logout();
@@ -20,8 +25,30 @@ export default function Dashboard() {
             setUserdetail(res.data);
             console.log(userdetail)
             proveedorUnicoContratos(res.data.id, setCliente);
-
         });
+    }
+
+    const peticionPutStatus = () => {
+        setIdContrato(3);
+        http.put(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`, {status: 'Cancelado por cliente'} ).then((res)=>
+        {
+            console.log(res.data);
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error.response);
+            }
+        )
+    }
+
+    const peticionDeleteContrato= () => {
+http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`).then((res)=>
+        {
+            console.log(res.data);
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error.response);
+            }
+        )
     }
 
     useEffect(() => {
@@ -74,6 +101,7 @@ export default function Dashboard() {
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Fecha</th>
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Hora</th>
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Lugar</th>
+                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,7 +115,10 @@ export default function Dashboard() {
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Fecha}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Hora}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Lugar}</th>
-                                            <button className='btn btn-danger ms-2 me-2 mt-1 mb-1 p-1' style={{fontSize: '10px', borderRadius: '4px'}}>Cancelar</button>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.status}</th>
+                                            <th>
+                                        <button className='btn btn-primary ms-2 me-2 mt-1 mb-1 p-1' style={{ fontSize: '10px', borderRadius: '4px' }} onClick={peticionPutStatus}>Cancelar</button></th><th>
+                                        <button className='btn btn-danger ms-2 me-2 mt-1 mb-1 p-1' style={{ fontSize: '10px', borderRadius: '4px' }} onClick={peticionDeleteContrato}>Eliminar</button></th>
                                         </tr>
                                         ))
                                         : "No hay contratos"}

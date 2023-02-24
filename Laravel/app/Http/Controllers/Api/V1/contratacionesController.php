@@ -55,31 +55,37 @@ class contratacionesController extends Controller
         ], 201);
     }
 
-    public function update(UpdateContratacionesRequest $request, $id){
-        // dd($id);
-        // dd($request->all());
-        $contratacion = Contrataciones::find($id);
-        // dd($contratacion);
-
-        $contratacion->paquete_id = $request->paquete_id;
-        // $contratacion->nombre_paquete = $request->nombre_paquete;
-        $contratacion->usuario_id = $request->usuario_id;
-        // $contratacion->nombre_cliente = $request->nombre_cliente;
-        $contratacion->Tipo_evento = $request->Tipo_evento;
-        $contratacion->Forma_de_pago = $request->Forma_de_pago;
-        $contratacion->Fecha = $request->Fecha;
-        $contratacion->Hora = $request->Hora;
-        $contratacion->Lugar = $request->Lugar;
-        $contratacion->fecha_contrato = $request->fecha_contrato;
-        // $contratacion->correo = $request->correo;
-        // $contratacion->correo_cliente = $request->correo_cliente;
-        // $contratacion->numero_telefono = $request->numero_telefono;
-        $contratacion->empresa_id = $request->empresa_id;
-        $contratacion->status = $request->status;
-        $contratacion->save();
-
-        return $contratacion;
+    public function update(UpdateContratacionesRequest $request, Contrataciones $contratacion)
+    {
+        $contratacion->update($request->all());
     }
+
+    // public function update(UpdateContratacionesRequest $request, $id){
+    //     // dd($id);
+    //     // dd($request->all());
+    //     $contratacion = Contrataciones::find($id);
+    //     // dd($contratacion);
+
+    //     $contratacion->paquete_id = $request->paquete_id;
+    //     // $contratacion->nombre_paquete = $request->nombre_paquete;
+    //     $contratacion->usuario_id = $request->usuario_id;
+    //     // $contratacion->nombre_cliente = $request->nombre_cliente;
+    //     $contratacion->Tipo_evento = $request->Tipo_evento;
+    //     $contratacion->Forma_de_pago = $request->Forma_de_pago;
+    //     $contratacion->Fecha = $request->Fecha;
+    //     $contratacion->Hora = $request->Hora;
+    //     $contratacion->Lugar = $request->Lugar;
+    //     $contratacion->fecha_contrato = $request->fecha_contrato;
+    //     // $contratacion->correo = $request->correo;
+    //     // $contratacion->correo_cliente = $request->correo_cliente;
+    //     // $contratacion->numero_telefono = $request->numero_telefono;
+    //     $contratacion->empresa_id = $request->empresa_id;
+    //     $contratacion->status = $request->status;
+    //     $contratacion->save();
+
+    //     return $contratacion;
+    // }
+
     public function show($id)
     {
         $contratacion = Contrataciones::join('users','users.id','=','contrataciones.usuario_id')
@@ -89,5 +95,10 @@ class contratacionesController extends Controller
             ->where('contrataciones.id',$id)->first();
 
         return $contratacion;
+    }
+
+    public function destroy($id)
+    {
+        Contrataciones::destroy($id);
     }
 }

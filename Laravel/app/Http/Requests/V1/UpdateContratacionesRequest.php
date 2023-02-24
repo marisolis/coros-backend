@@ -32,9 +32,29 @@ class UpdateContratacionesRequest extends FormRequest
                 // 'informacion'=>['required'],
                 // 'email'=>['required', 'email'],
                 // 'imagen'=>['nullable'],
+
+                'paquete_id'=>['sometimes', 'required'],
+                'usuario_id'=>['sometimes', 'required'],
+                'empresa_id'=>['sometimes', 'required'],
+                'Tipo_evento'=>['sometimes', 'required'],
+                'Forma_de_pago'=>['sometimes', 'required'],
+                'Fecha'=>['sometimes', 'required'],
+                'Hora'=>['sometimes', 'required'],
+                'Lugar'=>['sometimes', 'required'],
+                'status'=>['sometimes', 'required']
             ];
         } else {
             return [
+                'paquete_id'=>['sometimes', 'required'],
+                'usuario_id'=>['sometimes', 'required'],
+                'empresa_id'=>['sometimes', 'required'],
+                'Tipo_evento'=>['sometimes', 'required'],
+                'Forma_de_pago'=>['sometimes', 'required'],
+                'Fecha'=>['sometimes', 'required'],
+                'Hora'=>['sometimes', 'required'],
+                'Lugar'=>['sometimes', 'required'],
+                'status'=>['sometimes', 'required']
+
                 // 'name'=>['sometimes', 'required'],
                 // 'num_Telefono'=>['sometimes','required'],
                 // 'informacion'=>['sometimes','required'],
