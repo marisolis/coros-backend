@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { proveedorUnicoContratos } from '../Helpers/Cliente';
+import { clienteUnicoContratos } from '../Helpers/Cliente';
 import AuthUser from './AuthUser';
 import './styles.css';
 import axios from "axios";
@@ -24,7 +24,8 @@ export default function Dashboard() {
         http.post('/me').then((res)=>{
             setUserdetail(res.data);
             console.log(userdetail)
-            proveedorUnicoContratos(res.data.id, setCliente);
+            clienteUnicoContratos(res.data.id, setCliente);
+            console.log(cliente);
         });
     }
 
@@ -41,7 +42,7 @@ export default function Dashboard() {
     }
 
     const peticionDeleteContrato= () => {
-http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`).then((res)=>
+http.delete(`http://127.0.0.1:8000/api/v1/contratacion/2`).then((res)=>
         {
             console.log(res.data);
             window.location.reload();
@@ -108,8 +109,8 @@ http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`).then((res
                                         {cliente != null
                                         ? cliente.map((contrato) => (
                                         <tr key={contrato.id}>
-                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.paquete_id}</th>
-                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.empresa_id}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_paquete}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_empresa}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Tipo_evento}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Forma_de_pago}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Fecha}</th>

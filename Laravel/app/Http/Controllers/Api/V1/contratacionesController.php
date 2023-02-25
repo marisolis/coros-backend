@@ -25,7 +25,7 @@ class contratacionesController extends Controller
             ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
             ->get();
 
-        return $contrataciones;
+        return Contrataciones::all();
 
     }
 

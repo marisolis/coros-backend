@@ -4,10 +4,12 @@ import './styles.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
+import { proveedorUnicoContratos } from '../Helpers/Proveedor';
 
 export default function VendorDashboard() {
 
     const { token, logout } = AuthUser();
+    const [cliente, setCliente] = useState(null);
     const { http } = AuthUser();
     const [userdetail, setUserdetail] = useState('');
 
@@ -34,6 +36,8 @@ export default function VendorDashboard() {
         http.post('/me').then((res) => {
             setUserdetail(res.data);
             console.log(res.data);
+            proveedorUnicoContratos(res.data.id, setCliente);
+            console.log(cliente);
         });
     }
 
@@ -77,17 +81,18 @@ export default function VendorDashboard() {
             }
         })
     }
-    const peticionPutStatus = () => {
-        http.put(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`, {status: statusContrato} ).then((res)=>
+    const peticionPutStatus = (id) => {
+        http.put(`http://127.0.0.1:8000/api/v1/contratacion/${id}`, {status: statusContrato} ).then((res)=>
         {
             console.log(res.data);
+            window.location.reload();
         }).catch((error) => {
             console.log(error.response);
         })
     }
 
-    const peticionDeleteContrato= () => {
-        http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`).then((res)=>
+    const peticionDeleteContrato= (id) => {
+        http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${id}`).then((res)=>
                 {
                     console.log(res.data);
                     window.location.reload();
@@ -237,7 +242,7 @@ export default function VendorDashboard() {
                                     <tr style={{ backgroundColor: 'lightgray' }}>
                                         <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Nombre paquete</th>
                                         <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Nombre cliente</th>
-                                        <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Tel. Cliente</th>
+                                        {/* <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Tel. Cliente</th> */}
                                         <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Evento</th>
                                         <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Forma de pago</th>
                                         <th className='title-contrat-list p-1' style={{ border: '1px solid lightgray', fontSize: '14px' }}>Fecha</th>
@@ -247,18 +252,21 @@ export default function VendorDashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Paquete 1 Guitarras</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Emilio Jarey Mendez Torres</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>9611302266</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Misa</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Tarjeta Débito</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>2023-08-01</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>19:00:00</th>
-                                        <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Tuxtla Gtz. Col. Potinaspak calle Gladiola #185</th>
+                                        {cliente != null
+                                        ? cliente.map((contrato) => (
+                                        <tr key={contrato.id}>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_paquete}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_empresa}</th>
+                                            {/* <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.phone}</th> */}
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Tipo_evento}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Forma_de_pago}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Fecha}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Hora}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Lugar}</th>
+
                                         
-                                        <th>
-                                        <select class="form-select" defaultValue="Pendiente "  onChange={(e) => SetStatusContrato(e.target.value)} onBlur={(e) => SetStatusContrato(e.target.value)} >
+                                        <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>
+                                        <select class="form-select" defaultValue={contrato.status}  onChange={(e) => SetStatusContrato(e.target.value)} onBlur={(e) => SetStatusContrato(e.target.value)} >
 							<option value="Pendiente">Esperando respuesta</option>
 							<option value="Por pagar" >Pendiente de pago</option>
                             <option value="Cancelado" >Cancelar</option>
@@ -267,10 +275,12 @@ export default function VendorDashboard() {
 						</select>
                                         </th>
                                         <th>
-                                        <button className='btn btn-primary ms-2 me-2 mt-1 mb-1 p-1' style={{ fontSize: '10px', borderRadius: '4px' }} onClick={peticionPutStatus}>Cancelar</button></th><th>
+                                        <button className='btn btn-primary ms-2 me-2 mt-1 mb-1 p-1' style={{ fontSize: '10px', borderRadius: '4px' }} onClick={peticionPutStatus}>Guardar</button></th><th>
                                         <button className='btn btn-danger ms-2 me-2 mt-1 mb-1 p-1' style={{ fontSize: '10px', borderRadius: '4px' }} onClick={peticionDeleteContrato}>Eliminar</button></th>
                                     </tr>
-                                </tbody>
+                                        ))
+                                        : "No hay contratos"}
+                                    </tbody>
                             </table>
 
                         </div>

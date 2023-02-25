@@ -49,9 +49,7 @@ Route::group(['prefix'=>'v1','namespace'=> 'App\Http\Controllers\Api\V1'], funct
     Route::apiResource('paquetes', PaqueteController::class);
     Route::apiResource('fechas', FechaController::class);
     Route::apiResource('usuario', usuarioController::class);
-    Route::apiResource('contratacion', contratacionesController::class)->except([
-        'showByCliente', 'showByEmpresa'
-    ]);;
+    Route::apiResource('contratacion', contratacionesController::class);
     Route::get('empresas/find', [EmpresaCollection::class, 'findByEmail']);
     Route::post('paquetes/bulk',['uses'=>'PaqueteController@bulkStore']);
 });
