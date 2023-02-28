@@ -26,4 +26,12 @@ const proveedorUnicoFechas = async (id, state) => {
   state(response.data.data);
 };
 
-export { proveedoresLista, proveedorUnico, proveedorUnicoPaquetes };
+const proveedorUnicoContratos = async (id, state) => {
+  const response = await axios.get(
+    `http://127.0.0.1:8000/api/v1/contratacion/empresa/${id}`
+  );
+  console.log(response.data);
+  state(response.data);
+};
+
+export { proveedoresLista, proveedorUnico, proveedorUnicoPaquetes, proveedorUnicoContratos };

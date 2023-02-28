@@ -19,7 +19,14 @@ class contratacionesController extends Controller
 
     public function index()
     {
+        $contrataciones = Contrataciones::join('users','users.id','=','contrataciones.usuario_id')
+            ->join('empresas','empresas.id','=','contrataciones.empresa_id')
+            ->join('paquetes','paquetes.id','=','contrataciones.paquete_id')
+            ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
+            ->get();
+
         return Contrataciones::all();
+
     }
 
     public function store(Request $request){
@@ -95,6 +102,30 @@ class contratacionesController extends Controller
             ->where('contrataciones.id',$id)->first();
 
         return $contratacion;
+    }
+
+    public function showByCliente($id)
+    {
+        $contrataciones = Contrataciones::join('users','users.id','=','contrataciones.usuario_id')
+            ->join('empresas','empresas.id','=','contrataciones.empresa_id')
+            ->join('paquetes','paquetes.id','=','contrataciones.paquete_id')
+            ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
+            ->where('contrataciones.usuario_id',$id)
+            ->Get();
+
+        return Contrataciones::all();
+    }
+
+    public function showByProveedor($id)
+    {
+        $contrataciones = Contrataciones::join('users','users.id','=','contrataciones.usuario_id')
+            ->join('empresas','empresas.id','=','contrataciones.empresa_id')
+            ->join('paquetes','paquetes.id','=','contrataciones.paquete_id')
+            ->select('contrataciones.*','users.name AS nombre_cliente','empresas.name AS nombre_empresa','paquetes.name AS nombre_paquete')
+            ->where('contrataciones.empresa_id',$id)
+            ->Get();
+
+        return $contrataciones;
     }
 
     public function destroy($id)

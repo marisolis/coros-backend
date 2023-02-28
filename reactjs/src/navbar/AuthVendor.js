@@ -34,11 +34,7 @@ function AuthVendor() {
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  Inicio
-                </a>
-              </li>
+
 
               <li className="nav-item">
                 <a className="nav-link" href="/vendordashboard">
@@ -52,10 +48,7 @@ function AuthVendor() {
       </nav>
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/vendordashboard" element={<VendorDashboard />} />
-          <Route path="/paquete/:id" element={<Paquete />} />
-          <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
       </div>
     </>

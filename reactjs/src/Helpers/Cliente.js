@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const proveedorUnicoContratos = async (id, state) => {
+const clienteUnicoContratos = async (id, state) => {
   const response = await axios.get(
-    `http://localhost:8000/api/v1/usuario/${id}?includeContratos=true`
+    `http://127.0.0.1:8000/api/v1/contratacion/usuario/${id}`
   );
-  state(response.data.data.contrataciones);
+  console.log(response.data);
+  state(response.data);
 };
 
-export { proveedorUnicoContratos };
+export { clienteUnicoContratos };
