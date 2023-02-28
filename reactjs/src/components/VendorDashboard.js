@@ -257,8 +257,8 @@ export default function VendorDashboard() {
                                         <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>19:00:00</th>
                                         <th className='content-contrat-list p-1' style={{ border: '1px solid lightgray', fontWeight: '500', fontSize: '14px' }}>Tuxtla Gtz. Col. Potinaspak calle Gladiola #185</th>
                                         
-                                        <th>
-                                        <select class="form-select" defaultValue="Pendiente "  onChange={(e) => SetStatusContrato(e.target.value)} onBlur={(e) => SetStatusContrato(e.target.value)} >
+                                        <th style={{padding: '5px'}}>
+                                        <select className="form-select form-select-sm" defaultValue="Pendiente"  onChange={(e) => SetStatusContrato(e.target.value)} onBlur={(e) => SetStatusContrato(e.target.value)} >
 							<option value="Pendiente">Esperando respuesta</option>
 							<option value="Por pagar" >Pendiente de pago</option>
                             <option value="Cancelado" >Cancelar</option>

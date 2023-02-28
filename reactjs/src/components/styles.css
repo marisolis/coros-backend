@@ -48,6 +48,10 @@
     padding: 0px !important;
   }
 
+  .btn {
+    transition: 0.5s !important;
+  }
+
  .paquete-post{
   display: inline-flex;
  }
@@ -352,6 +356,7 @@
     border-radius: 0px;
     border-style: none !important;
     border-color: rgba(255, 255, 255, 0);
+    transition: 0.5s !important;
   }
 
   .backBtn:active{

@@ -84,11 +84,10 @@ function VerMasPaquete() {
             </div>
             <h2 style={{ marginTop: "2%", marginBottom: "2%" }}>Audio</h2>
             <div className="card col-sm-6 shadow p-2 mb-4 audio-container">
-              <audio
+              <audio controls
                 src={paquete.audio}
                 className="audio-control"
-                controls="controls"
-                preload="none"
+                controlsList="nodownload"
               ></audio>
             </div>
           </div>
