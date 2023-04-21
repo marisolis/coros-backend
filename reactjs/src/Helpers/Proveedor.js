@@ -26,12 +26,26 @@ const proveedorUnicoFechas = async (id, state) => {
   state(response.data.data);
 };
 
-const proveedorUnicoContratos = async (id, state) => {
+const proveedorUnicoContratos = async (id, state, proveedor) => {
   const response = await axios.get(
     `http://127.0.0.1:8000/api/v1/contratacion/empresa/${id}`
   );
-  console.log(response.data);
-  state(response.data);
+  if (response.data.length === 0) {
+    state(null);
+    proveedor(id);
+  } else {
+    state(response.data);
+    proveedor(id);
+  }
+  
 };
 
-export { proveedoresLista, proveedorUnico, proveedorUnicoPaquetes, proveedorUnicoContratos };
+const emailProveedor = async (email, state, proveedor) => {
+  const response = await axios.get(
+      `http://127.0.0.1:8000/api/v1/findByEmail/${email}`
+  );
+  console.log(response.data[0]);
+  proveedorUnicoContratos(response.data[0].id, state, proveedor)
+}
+
+export { proveedoresLista, proveedorUnico, proveedorUnicoPaquetes, proveedorUnicoContratos, emailProveedor };

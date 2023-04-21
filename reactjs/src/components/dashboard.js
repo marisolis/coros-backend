@@ -26,12 +26,15 @@ export default function Dashboard() {
             console.log(userdetail)
             clienteUnicoContratos(res.data.id, setCliente);
             console.log(cliente);
+            if(cliente.lenght===0){
+                setCliente(null);
+            }
         });
     }
 
     const peticionPutStatus = () => {
-        setIdContrato(3);
-        http.put(`http://127.0.0.1:8000/api/v1/contratacion/${idContrato}`, {status: 'Cancelado por cliente'} ).then((res)=>
+        console.log(cliente[0].id)
+        http.put(`http://127.0.0.1:8000/api/v1/contratacion/${cliente[0].id}`, {status: 'Cancelado por el cliente'} ).then((res)=>
         {
             console.log(res.data);
             window.location.reload();
@@ -42,7 +45,7 @@ export default function Dashboard() {
     }
 
     const peticionDeleteContrato= () => {
-http.delete(`http://127.0.0.1:8000/api/v1/contratacion/2`).then((res)=>
+http.delete(`http://127.0.0.1:8000/api/v1/contratacion/${cliente[0].id}`).then((res)=>
         {
             console.log(res.data);
             window.location.reload();
@@ -95,8 +98,9 @@ http.delete(`http://127.0.0.1:8000/api/v1/contratacion/2`).then((res)=>
                                 <table style={{width: '100%'}}>
                                     <thead>
                                         <tr style={{backgroundColor: 'lightgray'}}>
-                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Paquete ID</th>
-                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Empresa ID</th>
+                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Paquete</th>
+                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Empresa</th>
+                                            <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Tel.Empresa</th>
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Evento</th>
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Forma de pago</th>
                                             <th className='title-contrat-list p-1' style={{border: '1px solid gray', fontSize: '14px'}}>Fecha</th>
@@ -111,6 +115,7 @@ http.delete(`http://127.0.0.1:8000/api/v1/contratacion/2`).then((res)=>
                                         <tr key={contrato.id}>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_paquete}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.nombre_empresa}</th>
+                                            <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.phone_empresa}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Tipo_evento}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Forma_de_pago}</th>
                                             <th className='content-contrat-list p-1' style={{border: '1px solid gray', fontWeight: '500', fontSize: '14px'}}>{contrato.Fecha}</th>

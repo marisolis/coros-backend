@@ -4,6 +4,7 @@ import VendorDashboard from "../components/VendorDashboard";
 import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
+import DashboardProveedor from "../components/dashboardProveedor";
 
 function AuthVendor() {
   const { token, logout } = AuthUser();
@@ -48,7 +49,7 @@ function AuthVendor() {
       </nav>
       <div className="container">
         <Routes>
-          <Route path="/vendordashboard" element={<VendorDashboard />} />
+          <Route path="/vendordashboard" element={<DashboardProveedor />} />
         </Routes>
       </div>
     </>
