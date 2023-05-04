@@ -4,6 +4,7 @@ import Dashboard from "../components/dashboard";
 import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
+import Logo from "../assets/logo.jfif";
 
 function Auth() {
   const { token, logout } = AuthUser();
@@ -18,8 +19,8 @@ function Auth() {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-0 py-2">
         <div className="container px-0 mx-5 mw-100">
-          <a className="navbar-brand" href="#">
-          Ambar
+          <a className="navbar-brand" href="/">
+          <img src={Logo} style={{height: '30px', maxHeight: '100%', padding: '0', margin: '0'}}/>
           </a>
           <button
             className="navbar-toggler"

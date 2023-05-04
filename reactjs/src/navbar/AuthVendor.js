@@ -5,6 +5,7 @@ import AuthUser from "../components/AuthUser";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
 import DashboardProveedor from "../components/dashboardProveedor";
+import Logo from "../assets/logo.jfif";
 
 function AuthVendor() {
   const { token, logout } = AuthUser();
@@ -19,8 +20,8 @@ function AuthVendor() {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-0 py-2">
         <div className="container px-0 mx-5 mw-100">
-          <a className="navbar-brand" href="#">
-          Ambar
+          <a className="navbar-brand" href="/">
+          <img src={Logo} style={{height: '30px', maxHeight: '100%', padding: '0', margin: '0'}}/>
           </a>
           <button
             className="navbar-toggler"
@@ -49,7 +50,10 @@ function AuthVendor() {
       </nav>
       <div className="container">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/vendordashboard" element={<DashboardProveedor />} />
+          <Route path="/paquete/:id" element={<Paquete />} />
+          <Route path="/proveedor/:id" element={<Proveedor />} />
         </Routes>
       </div>
     </>

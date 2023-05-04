@@ -5,6 +5,7 @@ import Register from "../components/register";
 import Paquete from "../Pages/VerMasPaquete";
 import Proveedor from "../Pages/VerMasProveedor";
 import RegisterVendor from "../components/RegisterVendor";
+import Logo from "../assets/logo.jfif";
 
 function Guest() {
   return (
@@ -12,7 +13,7 @@ function Guest() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-0 py-2">
         <div className="container px-0 mx-5 mw-100">
           <a className="navbar-brand" href="/">
-            Ambar
+          <img src={Logo} style={{height: '30px', maxHeight: '100%', padding: '0', margin: '0'}}/>
           </a>
           <button
             className="navbar-toggler"

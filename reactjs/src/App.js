@@ -26,7 +26,7 @@ function App() {
     if (token != null) {
       checkTokenExpiration();
     }
-    document.title = 'Ambar';
+    document.title = 'K+OLIK';
   }, []);
 
   const {getToken} = AuthUser();

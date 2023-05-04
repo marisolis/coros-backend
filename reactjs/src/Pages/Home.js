@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import Filtrar from "../components/Filtrar";
 import { proveedoresLista } from "../Helpers/Proveedor";
+import Banner from "../assets/banner.jfif";
 
 function Home() {
   
@@ -27,6 +28,7 @@ function Home() {
   return (
     <div className="container">
       <div className="container-fluid mw-100 m-0 p-0">{<HeroImage />}</div>
+      <div style={{paddingTop: '3%'}}><img src={Banner} style={{width: '100%', margin: 'auto', display: 'block'}}/></div>
       {<Filtrar />}
       <div className="lista-personajes cards justify-content-between">
         {proveedores != null
